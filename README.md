@@ -25,11 +25,14 @@
   
  
 ### 3ºAno / 3rd Year
+#### Laboratórios I
+- **Aplicação de Conversação** / Conversation Application
+  > Transmissão de dados através da interface RS232 / Data transmission via RS232 interface  
+  > Comunicação por Radio-Frequência / Radio-Frequency Communication  
+  > Aplicação JavaFX / JavaFX Application
 
----
-
-### Laboratórios I
-**Aplicação de Conversação**
-> Transmissão de dados através da interface RS232 / Data transmission via RS232 interface  
-> Comunicação por Radio-Frequência / Radio-Frequency Communication  
-> Aplicação JavaFX / JavaFX Application
+#### Laboratórios II
+- **Sistema de Monitorização de Atividade Física** / Physical Activity Monitoring System 
+   > Recolha de Dados com Arduino e Sensor  
+   > Comunicação UDP e TCP  
+   > Aplicação Web
