@@ -72,16 +72,16 @@
 #### Criptografia
 ``Python - cryptography.io library``
 - Criptografia Simética / Symmetric Encryption
-  - Fernet
-  - Fernet+PBKDF2 & Fernet+Scrypt
-  - ChaCha20+PBKDF2
-  - IND-CPA + AES-ECB
-  - CBC + Encrypt then MAC
+  - [Fernet](4ºAno/Cripto/G1)
+  - [Fernet+PBKDF2 & Fernet+Scrypt](4ºAno/Cripto/G2)
+  - [ChaCha20+PBKDF2](4ºAno/Cripto/G3)
+  - [IND-CPA + AES-ECB](4ºAno/Cripto/G4)
+  - [CBC + Encrypt then MAC](4ºAno/Cripto/G5)
 - Criptografia Assimétrica / Asymmetric Encryption
-  - CBC + DiffieHellman
-  - Protocolo Sts + Assinaturas
-  - Protocolo Sts + Certificados
-  - Protocolo Sts + Certificados Melhorado
+  - [CBC + DiffieHellman](4ºAno/Cripto/G6)
+  - [Protocolo Sts + Assinaturas](4ºAno/Cripto/G7)
+  - [Protocolo Sts + Certificados](4ºAno/Cripto/G8)
+  - [Protocolo Sts + Certificados Melhorado](4ºAno/Cripto/CliServ)
 
 #### Redes Móveis
 - **Aplicação móvel para efetuar transações em cripto-moedas**  
