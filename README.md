@@ -83,7 +83,7 @@
   - Protocolo Sts + Certificados
 
 #### Redes Móveis
-- Aplicação móvel para efetuar transações em cripto-moedas  
+- **Aplicação móvel para efetuar transações em cripto-moedas**  
 Mobile application for making transactions in cryptocurrencies
   > Aplicação Android desenvolvida em React Native / Android application developed in React Native  
   > Plataforma Blockchain CORDA para realização de transações / CORDA Blockchain platform for transactions
