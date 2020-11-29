@@ -81,6 +81,7 @@
   - CBC + DiffieHellman
   - Protocolo Sts + Assinaturas
   - Protocolo Sts + Certificados
+  - Protocolo Sts + Certificados Melhorado
 
 #### Redes Móveis
 - **Aplicação móvel para efetuar transações em cripto-moedas**  
