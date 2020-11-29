@@ -3,14 +3,20 @@
 ### 1ºAno / 1st Year
 #### Métodos de Programação I 
 - **Morse Code Sequence Decoder** ``C``
-
+  - [Project Code](1ºAno/MP1/projetoMP1.c)
+  - [Project Report](1ºAno/MP1/projeto-MIETI1617-MP1-a82157.pdf)
 #### Métodos de Programação II
 - **Projeto 1**: *Arrays, Structs and Files* ``C``
   - Gestão de uma base de dados de Cartão de Cidadão / Management of a Citizen Card database
+    - [Project Code](1ºAno/MP2/Projeto%201/mp216TP1Gr06.c)
 - **Projeto 2**: *Pointers and Linked Lists* ``C``
   - Gestão de um armazém / Warehouse management
+    - [Project Folder](1ºAno/MP2/Projeto%202/Storage)
+    - [Project Report](1ºAno/MP2/Projeto%202/mp216TP2Gr06.pdf)
 - **Projeto 3**: *Games with Linked Lists* ``C``
   - Trivia Game with special additions :smile:
+    - [Project Folder](1ºAno/MP2/Projeto%203/QUIZZER)
+    - [Project Report](1ºAno/MP2/Projeto%203/mp216TP3Gr06.pdf)
 
 
 ### 2ºAno / 2nd Year
