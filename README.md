@@ -60,10 +60,10 @@
     > Gestor e Agente SNMP - biblioteca SNMP4J / SNMP Manager and Agent - SNMP4J Library
 
 #### Tecnologias e Serviços Multimédia
-- **Projeto 1** ``C``
+- [**Projeto 1**](4ºAno/TSM/TP1) ``C``
   - Programa de compressão/descompressão com o algoritmo Shannon-Fano  
   Compression/decompression program with the Shannon-Fano algorithm
-- **Projeto 2** ``C``
+- [Projeto 2](4ºAno/TSM/TP2) ``C``
   - Programa de compressão/descompressão com o algoritmo LZW  
   Compression/decompression program with the LZW algorithm
 - **Projeto 3** ``Java``
