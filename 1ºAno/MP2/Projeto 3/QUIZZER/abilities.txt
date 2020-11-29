@@ -1,0 +1,12 @@
+Bomb
+Two randomly selected wrong answers are blown away.
+0
+Double Chance
+Gives a second opportunity if the answer is wrong.
+0
+Skip
+The question is replaced by a new one.
+0
+Summon Ally
+Summon an ally to answer the question.
+0

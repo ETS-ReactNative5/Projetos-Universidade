@@ -1,0 +1,28 @@
+Ability Up
+ABUP
+Raised ability points.
+0
+Precision
+PREC
+Perfect accuracy.
+0
+Recover
+RCOV
+Knocking-out recovers health.
+0
+Regeneration
+RGEN
+Health regeneration.
+0
+Resistance
+RSIS
+Increased resistance.
+0
+Strength
+STRG
+Increased damage.
+0
+Vampire
+VAMP
+Damage dealt is returned as health.
+0

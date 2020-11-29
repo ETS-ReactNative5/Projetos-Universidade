@@ -1,0 +1,48 @@
+Art
+Oscar Wilde
+Salvador Dali
+James Joyce
+Vincent van Gogh
+Ernest Hemingway
+Pablo Picasso
+0
+Entertainment
+Mr. Spock
+Harry Potter
+Spider-Man
+Darth Vader
+Sherlock Holmes
+Batman
+0
+Geography
+Hernan Cortes
+Ferdinand Magellan
+Christopher Columbus
+Vasco da Gama
+Marco Polo
+Neil Armstrong
+0
+History
+Henry VIII of England
+Alexander the Great
+Joseph Stalin
+Mary, Queen of Scots
+Moses
+Mahatma Gandhi
+0
+Science
+Stephen Hawking
+Charles Darwin
+Marie Curie
+Galileu Galilei
+Isaac Newton
+Albert Einstein
+0
+Sport
+Muhammad Ali
+Roger Federer
+Cristiano Ronaldo
+Usain Bolt
+Tiger Woods
+LeBron James
+0

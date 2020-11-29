@@ -1,0 +1,128 @@
+10
+Counter-Strike
+9.990000
+9999
+20
+Team Fortress Classic
+4.990000
+9999
+30
+Day of Defeat
+4.990000
+9999
+40
+Deathmatch Classic
+4.990000
+9999
+50
+Half-Life: Opposing Force
+4.990000
+9999
+60
+Ricochet
+4.990000
+9999
+70
+Half-Life
+9.990000
+9999
+80
+Counter-Strike: Condition Zero
+9.990000
+9999
+92
+Codename Gordon
+0.000000
+0
+100
+Counter-Strike: Condition Zero Deleted Scenes
+0.000000
+9999
+130
+Half-Life: Blue Shift
+4.990000
+9999
+220
+Half-Life 2
+9.990000
+9999
+240
+Counter-Strike: Source
+19.990000
+9999
+280
+Half-Life: Source
+9.990000
+9999
+300
+Day of Defeat: Source
+9.990000
+9999
+320
+Half-Life 2: Deathmatch
+4.990000
+9999
+340
+Half-Life 2: Lost Coast
+0.000000
+9999
+360
+Half-Life Deathmatch: Source
+9.990000
+9999
+380
+Half-Life 2: Episode One
+7.990000
+9999
+400
+Portal
+9.990000
+9999
+420
+Half-Life 2: Episode Two
+7.990000
+9999
+440
+Team Fortress 2
+0.000000
+9999
+500
+Left 4 Dead
+19.990000
+9999
+550
+Left 4 Dead 2
+19.990000
+9999
+570
+Dota 2
+0.000000
+9999
+620
+Portal 2
+19.990000
+9999
+630
+Alien Swarm
+0.000000
+9999
+730
+Counter-Strike: Global Offensive
+14.990000
+9999
+4000
+Garry's Mod
+9.990000
+9999
+245550
+Free to Play
+0.000000
+9999
+450390
+The Lab
+0.000000
+9999
+453170
+Destions
+0.000000
+9999
