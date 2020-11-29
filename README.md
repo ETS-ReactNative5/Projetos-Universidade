@@ -72,7 +72,7 @@
 #### Criptografia
 ``Python - cryptography.io library``
 - Criptografia Simética / Symmetric Encryption
-  - Fernet
+  - [Fernet](4ºAno/Cripto/G1)
   - Fernet+PBKDF2 & Fernet+Scrypt
   - ChaCha20+PBKDF2
   - IND-CPA + AES-ECB
