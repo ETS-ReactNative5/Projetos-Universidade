@@ -31,7 +31,7 @@
   > Aplicação JavaFX / JavaFX Application
 
 #### Laboratórios II
-- **Sistema de Monitorização de Atividade Física** / Physical Activity Monitoring System ``C/C++, HTML, JS, CSS``
+- **Sistema de Monitorização de Atividade Física** / Physical Activity Monitoring System ``C/C++, Web``
    > Recolha de Dados com Arduino e Sensores 3D (acelerómetro & giroscópio) / Data Collection with Arduino and 3D Sensors  
    > Comunicação UDP e TCP / UDP and TCP Communication  
    > Aplicação Web / Web Application  
