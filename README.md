@@ -7,26 +7,29 @@
   - [Project Report](1ºAno/MP1/projeto-MIETI1617-MP1-a82157.pdf)
 #### Métodos de Programação II
 - **Projeto 1**: *Arrays, Structs and Files* ``C``
-  - Gestão de uma base de dados de Cartão de Cidadão / Management of a Citizen Card database
-    - [Project Code](1ºAno/MP2/Projeto%201/mp216TP1Gr06.c)
+  - Gestão de uma base de dados de Cartão de Cidadão / Management of a Citizen Card database  
+  [Project Code](1ºAno/MP2/Projeto%201/mp216TP1Gr06.c)
 - **Projeto 2**: *Pointers and Linked Lists* ``C``
-  - Gestão de um armazém / Warehouse management
-    - [Project Folder](1ºAno/MP2/Projeto%202/Storage)
-    - [Project Report](1ºAno/MP2/Projeto%202/mp216TP2Gr06.pdf)
+  - Gestão de um armazém / Warehouse management  
+  [Project Folder](1ºAno/MP2/Projeto%202/Storage)  
+  [Project Report](1ºAno/MP2/Projeto%202/mp216TP2Gr06.pdf)
 - **Projeto 3**: *Games with Linked Lists* ``C``
-  - Trivia Game with special additions :smile:
-    - [Project Folder](1ºAno/MP2/Projeto%203/QUIZZER)
-    - [Project Report](1ºAno/MP2/Projeto%203/mp216TP3Gr06.pdf)
+  - Trivia Game with special additions :smile:  
+  [Project Folder](1ºAno/MP2/Projeto%203/QUIZZER)  
+  [Project Report](1ºAno/MP2/Projeto%203/mp216TP3Gr06.pdf)
 
 
 ### 2ºAno / 2nd Year
 #### Microcontroladores
 - **Projeto 1** ``Assembly``
-  - µLogic Calculator
+  - µLogic Calculator  
+  [Project Code](2ºAno/Microcontroladores/Calculator/calc.a51)
 - **Projeto 2** ``Assembly``
-  - Fechadura Eletrónica / Eletronic Lock
+  - Fechadura Eletrónica / Eletronic Lock  
+  [Project Code](2ºAno/Microcontroladores/Locker/loc.a51)
 - **Projeto 3** ``Assembly``
-  - Interface a teclado PS/2 / Keyboard Interface PS/2
+  - Interface a teclado PS/2 / Keyboard Interface PS/2  
+  [Project Code](2ºAno/Microcontroladores/PS2%20Interface/projeto.a51)
   
  
 ### 3ºAno / 3rd Year
@@ -35,13 +38,18 @@
   > Transmissão de dados através da interface RS232 / Data transmission via RS232 interface  
   > Comunicação por Radio-Frequência / Radio-Frequency Communication  
   > Aplicação JavaFX / JavaFX Application
-
+  - [Arduino code](3ºAno/LTI1/arduino.ino)
+  - [JavaFX App](3ºAno/LTI1/Chat)
+  - [Project Report](3ºAno/LTI1/A4-G3.pdf)
+  
 #### Laboratórios II
 - **Sistema de Monitorização de Atividade Física** / Physical Activity Monitoring System ``C/C++, Web``
    > Recolha de Dados com Arduino e Sensores 3D (acelerómetro & giroscópio) / Data Collection with Arduino and 3D Sensors  
    > Comunicação UDP e TCP / UDP and TCP Communication  
    > Aplicação Web / Web Application  
-
+  - [Project Folder](3ºAno/LTI2/Projeto)
+  - [Project Report](3ºAno/LTI2/RF-G7.pdf)
+  
 #### Redes de Computadores I
 - **Simulação de LANs Ethernet e Redes TCP/IP usando CORE** / Simulation of Ethernet LANs and TCP/IP Networks using CORE
 
