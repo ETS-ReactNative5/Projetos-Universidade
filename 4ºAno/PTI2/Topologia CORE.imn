@@ -1,0 +1,1149 @@
+node n2 {
+    type router
+    model router
+    network-config {
+	hostname n2
+	!
+	interface eth0
+	 ipv6 address 2001:690:2280:823::2/126
+	!
+	interface eth1
+	 ipv6 address 2001:690:2280:823::9/126
+	!
+    }
+    canvas c1
+    iconcoords {77.0 267.0}
+    labelcoords {77.0 299.0}
+    interface-peer {eth1 n4}
+    interface-peer {eth0 n1}
+    services {zebra OSPFv3 BGP vtysh IPForward}
+    custom-config {
+	custom-config-id service:zebra
+	custom-command zebra
+	config {
+	files=('/usr/local/etc/quagga/Quagga.conf', 'quaggaboot.sh', '/usr/local/etc/quagga/vtysh.conf', )
+	}
+    }
+    custom-config {
+	custom-config-id service:zebra:/usr/local/etc/quagga/Quagga.conf
+	custom-command /usr/local/etc/quagga/Quagga.conf
+	config {
+	interface eth0
+	  
+	  ipv6 address 2001:690:2280:823::2/126
+	!
+	interface eth1
+	  
+	  ipv6 address 2001:690:2280:823::9/126
+	!
+	router ospf6
+	  router-id 11.11.11.11
+	  redistribute bgp
+	  interface eth0 area 0.0.0.0
+	!
+	router bgp 300
+	  bgp router-id 11.11.11.11
+	  no bgp default ipv4-unicast
+	  neighbor 2001:690:2280:823::a remote-as 400
+	!
+	 address-family ipv6
+	  network 2001:690:2280:820::/64
+	  neighbor 2001:690:2280:823::a activate
+	  redistribute connected
+	 exit-address-family
+	!
+	}
+    }
+}
+
+node n3 {
+    type router
+    model router
+    network-config {
+	hostname n3
+	!
+	interface eth0
+	 ipv6 address 2001:690:2280:823::6/126
+	!
+	interface eth1
+	 ipv6 address 2001:690:2280:823::0D/126
+	!
+    }
+    canvas c1
+    iconcoords {212.0 33.0}
+    labelcoords {214.0 63.0}
+    interface-peer {eth1 n5}
+    interface-peer {eth0 n1}
+    services {zebra OSPFv3 BGP vtysh IPForward}
+    custom-config {
+	custom-config-id service:zebra
+	custom-command zebra
+	config {
+	files=('/usr/local/etc/quagga/Quagga.conf', 'quaggaboot.sh', '/usr/local/etc/quagga/vtysh.conf', )
+	}
+    }
+    custom-config {
+	custom-config-id service:zebra:/usr/local/etc/quagga/Quagga.conf
+	custom-command /usr/local/etc/quagga/Quagga.conf
+	config {
+	interface eth0
+	  
+	  ipv6 address 2001:690:2280:823::6/126
+	!
+	interface eth1
+	  
+	  ipv6 address 2001:690:2280:823::d/126
+	!
+	router ospf6
+	  router-id 10.10.10.10
+	  redistribute bgp
+	  interface eth0 area 0.0.0.0
+	!
+	router bgp 100
+	  bgp router-id 10.10.10.10
+	  no bgp default ipv4-unicast
+	  neighbor 2001:690:2280:823::e remote-as 200
+	!
+	 address-family ipv6
+	  network 2001:690:2280:820::/64
+	  neighbor 2001:690:2280:823::e activate
+	  redistribute connected
+	 exit-address-family
+	!
+	
+	}
+    }
+}
+
+node n4 {
+    type router
+    model router
+    network-config {
+	hostname n4
+	!
+	interface eth1
+	 ipv6 address 2001:690:2280:823::12/126
+	!
+	interface eth0
+	 ipv6 address 2001:690:2280:823::0A/126
+	!
+    }
+    canvas c1
+    iconcoords {281.0 699.0}
+    labelcoords {246.0 707.0}
+    interface-peer {eth0 n2}
+    interface-peer {eth1 n6}
+    custom-config {
+	custom-config-id service:zebra
+	custom-command zebra
+	config {
+	files=('/usr/local/etc/quagga/Quagga.conf', 'quaggaboot.sh', '/usr/local/etc/quagga/vtysh.conf', )
+	}
+    }
+    custom-config {
+	custom-config-id service:zebra:/usr/local/etc/quagga/Quagga.conf
+	custom-command /usr/local/etc/quagga/Quagga.conf
+	config {
+	interface eth0
+	  
+	  ipv6 address 2001:690:2280:823::a/126
+	!
+	interface eth1
+	  
+	  ipv6 address 2001:690:2280:823::12/126
+	!
+	router ospf6
+	  router-id 13.13.13.13
+	  redistribute bgp
+	  interface eth0 area 0.0.0.0
+	  interface eth1 area 0.0.0.0
+	!
+	router bgp 400
+	  bgp router-id 13.13.13.13
+	  no bgp default ipv4-unicast
+	  neighbor 2001:690:2280:823::9 remote-as 300
+	!
+	 address-family ipv6
+	  network 2001:690:2280:821::/64
+	  neighbor 2001:690:2280:823::9 activate
+	  redistribute connected
+	 exit-address-family
+	!
+	
+	}
+    }
+    services {zebra OSPFv3 BGP vtysh IPForward}
+}
+
+node n5 {
+    type router
+    model router
+    network-config {
+	hostname n5
+	!
+	interface eth1
+	 ipv6 address 2001:690:2280:823::1E/126
+	!
+	interface eth0
+	 ipv6 address 2001:690:2280:823::0E/126
+	!
+    }
+    canvas c1
+    iconcoords {1434.0 60.0}
+    labelcoords {1434.0 92.0}
+    interface-peer {eth0 n3}
+    interface-peer {eth1 n7}
+    services {zebra OSPFv3 BGP vtysh IPForward}
+    custom-config {
+	custom-config-id service:zebra
+	custom-command zebra
+	config {
+	files=('/usr/local/etc/quagga/Quagga.conf', 'quaggaboot.sh', '/usr/local/etc/quagga/vtysh.conf', )
+	}
+    }
+    custom-config {
+	custom-config-id service:zebra:/usr/local/etc/quagga/Quagga.conf
+	custom-command /usr/local/etc/quagga/Quagga.conf
+	config {
+	interface eth0
+	  
+	  ipv6 address 2001:690:2280:823::e/126
+	!
+	interface eth1
+	  
+	  ipv6 address 2001:690:2280:823::1e/126
+	!
+	router ospf6
+	  router-id 12.12.12.12
+	  redistribute bgp
+	  interface eth0 area 0.0.0.0
+	  interface eth1 area 0.0.0.0
+	!
+	router bgp 200
+	  bgp router-id 12.12.12.12
+	  no bgp default ipv4-unicast
+	  neighbor 2001:690:2280:823::d remote-as 100
+	!
+	 address-family ipv6
+	  network 2001:690:2280:822::/64
+	  neighbor 2001:690:2280:823::d activate
+	  redistribute connected
+	 exit-address-family
+	!
+	
+	}
+    }
+}
+
+node n6 {
+    type router
+    model router
+    network-config {
+	hostname n6
+	!
+	interface eth3
+	 ipv6 address 2001:690:2280:823::19/126
+	!
+	interface eth1
+	 ipv6 address 2001:690:2280:821::1/64
+	!
+	interface eth2
+	 ipv6 address 2001:690:2280:823::15/126
+	!
+	interface eth0
+	 ipv6 address 2001:690:2280:823::11/126
+	!
+    }
+    canvas c1
+    iconcoords {247.0 807.0}
+    labelcoords {220.0 826.0}
+    interface-peer {eth0 n4}
+    interface-peer {eth1 n14}
+    interface-peer {eth2 n8}
+    interface-peer {eth3 n9}
+    services {zebra OSPFv3 vtysh IPForward}
+    custom-config {
+	custom-config-id service:zebra
+	custom-command zebra
+	config {
+	files=('/usr/local/etc/quagga/Quagga.conf', 'quaggaboot.sh', '/usr/local/etc/quagga/vtysh.conf', )
+	}
+    }
+    custom-config {
+	custom-config-id service:zebra:/usr/local/etc/quagga/Quagga.conf
+	custom-command /usr/local/etc/quagga/Quagga.conf
+	config {
+	interface eth0
+	  
+	  ipv6 address 2001:690:2280:823::11/126
+	!
+	interface eth1
+	  
+	  ipv6 address 2001:690:2280:821::1/64
+	!
+	interface eth2
+	  
+	  ipv6 address 2001:690:2280:823::15/126
+	!
+	interface eth3
+	  
+	  ipv6 address 2001:690:2280:823::19/126
+	!
+	router ospf6
+	  router-id 1.1.1.1
+	  interface eth0 area 0.0.0.0
+	  interface eth1 area 0.0.0.0
+	  interface eth2 area 0.0.0.0
+	  interface eth3 area 0.0.0.0
+	!
+	
+	}
+    }
+}
+
+node n7 {
+    type router
+    model router
+    network-config {
+	hostname n7
+	!
+	interface eth3
+	 ipv6 address 2001:690:2280:822::1/64
+	!
+	interface eth2
+	 ipv6 address 2001:690:2280:823::25/126
+	!
+	interface eth1
+	 ipv6 address 2001:690:2280:823::21/126
+	!
+	interface eth0
+	 ipv6 address 2001:690:2280:823::1D/126
+	!
+    }
+    canvas c1
+    iconcoords {1484.0 135.0}
+    labelcoords {1484.0 167.0}
+    interface-peer {eth0 n5}
+    interface-peer {eth1 n10}
+    interface-peer {eth2 n11}
+    interface-peer {eth3 n15}
+    custom-config {
+	custom-config-id service:zebra
+	custom-command zebra
+	config {
+	files=('/usr/local/etc/quagga/Quagga.conf', 'quaggaboot.sh', '/usr/local/etc/quagga/vtysh.conf', )
+	}
+    }
+    custom-config {
+	custom-config-id service:zebra:/usr/local/etc/quagga/Quagga.conf
+	custom-command /usr/local/etc/quagga/Quagga.conf
+	config {
+	interface eth0
+	  
+	  ipv6 address 2001:690:2280:823::1d/126
+	!
+	interface eth1
+	  
+	  ipv6 address 2001:690:2280:823::21/126
+	!
+	interface eth2
+	  
+	  ipv6 address 2001:690:2280:823::25/126
+	!
+	interface eth3
+	  
+	  ipv6 address 2001:690:2280:822::1/64
+	!
+	router ospf6
+	  router-id 2.2.2.2
+	  interface eth0 area 0.0.0.0
+	  interface eth1 area 0.0.0.0
+	  interface eth2 area 0.0.0.0
+	  interface eth3 area 0.0.0.0
+	!
+	
+	}
+    }
+    services {zebra OSPFv3 vtysh IPForward}
+}
+
+node n16 {
+    type router
+    model PC
+    network-config {
+	hostname n16
+	!
+	interface eth0
+	 ip address 10.0.10.20/32
+	 ipv6 address 2001:690:2280:824::20/64
+	!
+    }
+    canvas c1
+    iconcoords {1566.0 217.0}
+    labelcoords {1566.0 249.0}
+    interface-peer {eth0 n22}
+}
+
+node n17 {
+    type router
+    model PC
+    network-config {
+	hostname n17
+	!
+	interface eth0
+	 ip address 10.0.10.21/32
+	 ipv6 address 2001:690:2280:824::21/64
+	!
+    }
+    canvas c1
+    iconcoords {85.0 716.0}
+    labelcoords {85.0 748.0}
+    interface-peer {eth0 n22}
+}
+
+node n18 {
+    type router
+    model PC
+    network-config {
+	hostname n18
+	!
+	interface eth0
+	 ip address 10.0.10.22/32
+	 ipv6 address 2001:690:2280:824::22/64
+	!
+    }
+    canvas c1
+    iconcoords {325.0 258.0}
+    labelcoords {325.0 290.0}
+    interface-peer {eth0 n22}
+}
+
+node n19 {
+    type router
+    model PC
+    network-config {
+	hostname n19
+	!
+	interface eth0
+	 ip address 10.0.10.23/32
+	 ipv6 address 2001:690:2280:824::23/64
+	!
+    }
+    canvas c1
+    iconcoords {1245.0 96.0}
+    labelcoords {1245.0 128.0}
+    interface-peer {eth0 n22}
+}
+
+node n20 {
+    type router
+    model PC
+    network-config {
+	hostname n20
+	!
+	interface eth0
+	 ip address 10.0.10.24/32
+	 ipv6 address 2001:690:2280:824::24/64
+	!
+    }
+    canvas c1
+    iconcoords {1296.0 318.0}
+    labelcoords {1296.0 350.0}
+    interface-peer {eth0 n22}
+}
+
+node n21 {
+    type router
+    model PC
+    network-config {
+	hostname n21
+	!
+	interface eth0
+	 ip address 10.0.10.25/32
+	 ipv6 address 2001:690:2280:824::25/64
+	!
+    }
+    canvas c1
+    iconcoords {599.0 531.0}
+    labelcoords {599.0 563.0}
+    interface-peer {eth0 n22}
+}
+
+node n1 {
+    type router
+    model router
+    network-config {
+	hostname n1
+	!
+	interface eth1
+	 ipv6 address 2001:690:2280:823::5/126
+	!
+	interface eth0
+	 ipv6 address 2001:690:2280:823::1/126
+	!
+	interface eth2
+	 ipv6 address 2001:690:2280:820::1/64
+	!
+    }
+    canvas c1
+    iconcoords {148.0 161.0}
+    labelcoords {148.0 193.0}
+    interface-peer {eth0 n2}
+    interface-peer {eth1 n3}
+    interface-peer {eth2 n24}
+    services {zebra OSPFv3 vtysh IPForward}
+}
+
+node n26 {
+    type router
+    model PC
+    network-config {
+	hostname n26
+	!
+	interface eth0
+	 ip address 10.0.10.29/32
+	 ipv6 address 2001:690:2280:824::29/64
+	!
+    }
+    canvas c1
+    iconcoords {1026.0 378.0}
+    labelcoords {1026.0 410.0}
+    interface-peer {eth0 n22}
+}
+
+node n27 {
+    type router
+    model PC
+    network-config {
+	hostname n27
+	!
+	interface eth0
+	 ip address 10.0.10.26/32
+	 ipv6 address 2001:690:2280:824::26/64
+	!
+    }
+    canvas c1
+    iconcoords {916.0 202.0}
+    labelcoords {916.0 234.0}
+    interface-peer {eth0 n22}
+}
+
+node n28 {
+    type router
+    model PC
+    network-config {
+	hostname n28
+	!
+	interface eth0
+	 ip address 10.0.10.27/32
+	 ipv6 address 2001:690:2280:824::27/64
+	!
+    }
+    canvas c1
+    iconcoords {232.0 487.0}
+    labelcoords {232.0 519.0}
+    interface-peer {eth0 n22}
+}
+
+node n29 {
+    type router
+    model PC
+    network-config {
+	hostname n29
+	!
+	interface eth0
+	 ip address 10.0.10.28/32
+	 ipv6 address 2001:690:2280:824::28/64
+	!
+    }
+    canvas c1
+    iconcoords {340.0 633.0}
+    labelcoords {340.0 665.0}
+    interface-peer {eth0 n22}
+}
+
+node n22 {
+    type wlan
+    network-config {
+	hostname wlan22
+	!
+	interface wireless
+	 ip address 10.0.10.0/32
+	 ipv6 address 2001:690:2280:824::0/64
+	!
+	mobmodel
+	coreapi
+	emane_ieee80211abg
+	!
+    }
+    custom-config {
+	custom-config-id basic_range
+	custom-command {3 3 9 9 9}
+	config {
+	range=275
+	bandwidth=54000000
+	jitter=0
+	delay=20000
+	error=0
+	}
+    }
+    canvas c1
+    iconcoords {1015.0 580.0}
+    labelcoords {1015.0 612.0}
+    interface-peer {e0 n10}
+    interface-peer {e1 n11}
+    interface-peer {e2 n8}
+    interface-peer {e3 n9}
+    interface-peer {e4 n16}
+    interface-peer {e5 n17}
+    interface-peer {e6 n18}
+    interface-peer {e7 n19}
+    interface-peer {e8 n20}
+    interface-peer {e9 n21}
+    interface-peer {e10 n27}
+    interface-peer {e11 n28}
+    interface-peer {e12 n29}
+    interface-peer {e13 n26}
+}
+
+node n10 {
+    type router
+    model mdr
+    network-config {
+	hostname n10
+	!
+	interface eth1
+	 ipv6 address 2001:690:2280:824::1/64
+	!
+	interface eth0
+	 ipv6 address 2001:690:2280:823::22/126
+	!
+    }
+    canvas c1
+    iconcoords {1249.0 257.0}
+    labelcoords {1249.0 289.0}
+    interface-peer {eth1 n22}
+    interface-peer {eth0 n7}
+    custom-config {
+	custom-config-id service:zebra
+	custom-command zebra
+	config {
+	files=('/usr/local/etc/quagga/Quagga.conf', 'quaggaboot.sh', '/usr/local/etc/quagga/vtysh.conf', )
+	}
+    }
+    custom-config {
+	custom-config-id service:zebra:/usr/local/etc/quagga/Quagga.conf
+	custom-command /usr/local/etc/quagga/Quagga.conf
+	config {
+	interface eth0
+	  
+	  ipv6 address 2001:690:2280:823::22/126
+	  ipv6 ospf6 instance-id 65
+	  ipv6 ospf6 hello-interval 2
+	  ipv6 ospf6 dead-interval 6
+	  ipv6 ospf6 retransmit-interval 5
+	  ipv6 ospf6 network manet-designated-router
+	  ipv6 ospf6 diffhellos
+	  ipv6 ospf6 adjacencyconnectivity uniconnected
+	  ipv6 ospf6 lsafullness mincostlsa
+	!
+	interface eth1
+	  
+	  ipv6 address 2001:690:2280:824::1/64
+	  ipv6 ospf6 instance-id 65
+	  ipv6 ospf6 hello-interval 2
+	  ipv6 ospf6 dead-interval 6
+	  ipv6 ospf6 retransmit-interval 5
+	  ipv6 ospf6 network manet-designated-router
+	  ipv6 ospf6 diffhellos
+	  ipv6 ospf6 adjacencyconnectivity uniconnected
+	  ipv6 ospf6 lsafullness mincostlsa
+	!
+	router ospf6
+	  router-id 2.2.2.3
+	  interface eth0 area 0.0.0.0
+	  interface eth1 area 0.0.0.0
+	!
+	
+	}
+    }
+    services {zebra OSPFv3 OSPFv3MDR vtysh IPForward}
+}
+
+node n11 {
+    type router
+    model mdr
+    network-config {
+	hostname n11
+	!
+	interface eth1
+	 ipv6 address 2001:690:2280:824::2/64
+	!
+	interface eth0
+	 ipv6 address 2001:690:2280:823::26/126
+	!
+    }
+    canvas c1
+    iconcoords {1720.0 174.0}
+    labelcoords {1720.0 206.0}
+    interface-peer {eth1 n22}
+    interface-peer {eth0 n7}
+    custom-config {
+	custom-config-id service:zebra
+	custom-command zebra
+	config {
+	files=('/usr/local/etc/quagga/Quagga.conf', 'quaggaboot.sh', '/usr/local/etc/quagga/vtysh.conf', )
+	}
+    }
+    custom-config {
+	custom-config-id service:zebra:/usr/local/etc/quagga/Quagga.conf
+	custom-command /usr/local/etc/quagga/Quagga.conf
+	config {
+	interface eth0
+	  
+	  ipv6 address 2001:690:2280:823::26/126
+	  ipv6 ospf6 instance-id 65
+	  ipv6 ospf6 hello-interval 2
+	  ipv6 ospf6 dead-interval 6
+	  ipv6 ospf6 retransmit-interval 5
+	  ipv6 ospf6 network manet-designated-router
+	  ipv6 ospf6 diffhellos
+	  ipv6 ospf6 adjacencyconnectivity uniconnected
+	  ipv6 ospf6 lsafullness mincostlsa
+	!
+	interface eth1
+	  
+	  ipv6 address 2001:690:2280:824::2/64
+	  ipv6 ospf6 instance-id 65
+	  ipv6 ospf6 hello-interval 2
+	  ipv6 ospf6 dead-interval 6
+	  ipv6 ospf6 retransmit-interval 5
+	  ipv6 ospf6 network manet-designated-router
+	  ipv6 ospf6 diffhellos
+	  ipv6 ospf6 adjacencyconnectivity uniconnected
+	  ipv6 ospf6 lsafullness mincostlsa
+	!
+	router ospf6
+	  router-id 2.2.2.4
+	  interface eth0 area 0.0.0.0
+	  interface eth1 area 0.0.0.0
+	!
+	
+	}
+    }
+    services {zebra OSPFv3MDR vtysh IPForward}
+}
+
+node n8 {
+    type router
+    model mdr
+    network-config {
+	hostname n8
+	!
+	interface eth1
+	 ipv6 address 2001:690:2280:824::3/64
+	!
+	interface eth0
+	 ipv6 address 2001:690:2280:823::16/126
+	!
+    }
+    canvas c1
+    iconcoords {124.0 616.0}
+    labelcoords {124.0 648.0}
+    interface-peer {eth1 n22}
+    interface-peer {eth0 n6}
+    custom-config {
+	custom-config-id service:zebra
+	custom-command zebra
+	config {
+	files=('/usr/local/etc/quagga/Quagga.conf', 'quaggaboot.sh', '/usr/local/etc/quagga/vtysh.conf', )
+	}
+    }
+    custom-config {
+	custom-config-id service:zebra:/usr/local/etc/quagga/Quagga.conf
+	custom-command /usr/local/etc/quagga/Quagga.conf
+	config {
+	interface eth0
+	  
+	  ipv6 address 2001:690:2280:823::16/126
+	  ipv6 ospf6 instance-id 65
+	  ipv6 ospf6 hello-interval 2
+	  ipv6 ospf6 dead-interval 6
+	  ipv6 ospf6 retransmit-interval 5
+	  ipv6 ospf6 network manet-designated-router
+	  ipv6 ospf6 diffhellos
+	  ipv6 ospf6 adjacencyconnectivity uniconnected
+	  ipv6 ospf6 lsafullness mincostlsa
+	!
+	interface eth1
+	  
+	  ipv6 address 2001:690:2280:824::3/64
+	  ipv6 ospf6 instance-id 65
+	  ipv6 ospf6 hello-interval 2
+	  ipv6 ospf6 dead-interval 6
+	  ipv6 ospf6 retransmit-interval 5
+	  ipv6 ospf6 network manet-designated-router
+	  ipv6 ospf6 diffhellos
+	  ipv6 ospf6 adjacencyconnectivity uniconnected
+	  ipv6 ospf6 lsafullness mincostlsa
+	!
+	router ospf6
+	  router-id 1.1.1.2
+	  interface eth0 area 0.0.0.0
+	  interface eth1 area 0.0.0.0
+	!
+	
+	}
+    }
+    services {zebra OSPFv3MDR vtysh IPForward}
+}
+
+node n9 {
+    type router
+    model mdr
+    network-config {
+	hostname n9
+	!
+	interface eth1
+	 ipv6 address 2001:690:2280:824::4/64
+	!
+	interface eth0
+	 ipv6 address 2001:690:2280:823::1A/126
+	!
+    }
+    canvas c1
+    iconcoords {550.0 616.0}
+    labelcoords {550.0 648.0}
+    interface-peer {eth1 n22}
+    interface-peer {eth0 n6}
+    custom-config {
+	custom-config-id service:zebra
+	custom-command zebra
+	config {
+	files=('/usr/local/etc/quagga/Quagga.conf', 'quaggaboot.sh', '/usr/local/etc/quagga/vtysh.conf', )
+	}
+    }
+    custom-config {
+	custom-config-id service:zebra:/usr/local/etc/quagga/Quagga.conf
+	custom-command /usr/local/etc/quagga/Quagga.conf
+	config {
+	interface eth0
+	  
+	  ipv6 address 2001:690:2280:823::1a/126
+	  ipv6 ospf6 instance-id 65
+	  ipv6 ospf6 hello-interval 2
+	  ipv6 ospf6 dead-interval 6
+	  ipv6 ospf6 retransmit-interval 5
+	  ipv6 ospf6 network manet-designated-router
+	  ipv6 ospf6 diffhellos
+	  ipv6 ospf6 adjacencyconnectivity uniconnected
+	  ipv6 ospf6 lsafullness mincostlsa
+	!
+	interface eth1
+	  
+	  ipv6 address 2001:690:2280:824::4/64
+	  ipv6 ospf6 instance-id 65
+	  ipv6 ospf6 hello-interval 2
+	  ipv6 ospf6 dead-interval 6
+	  ipv6 ospf6 retransmit-interval 5
+	  ipv6 ospf6 network manet-designated-router
+	  ipv6 ospf6 diffhellos
+	  ipv6 ospf6 adjacencyconnectivity uniconnected
+	  ipv6 ospf6 lsafullness mincostlsa
+	!
+	router ospf6
+	  router-id 1.1.1.3
+	  interface eth0 area 0.0.0.0
+	  interface eth1 area 0.0.0.0
+	!
+	
+	}
+    }
+    services {zebra OSPFv3MDR vtysh IPForward}
+}
+
+node n24 {
+    type lanswitch
+    network-config {
+	hostname n24
+	!
+    }
+    canvas c1
+    iconcoords {29.0 93.0}
+    labelcoords {29.0 117.0}
+    interface-peer {e0 n1}
+    interface-peer {e1 n23}
+}
+
+node n13 {
+    type router
+    model host
+    network-config {
+	hostname n13
+	!
+	interface eth0
+	 ipv6 address 2001:690:2280:822::2/64
+	!
+    }
+    canvas c1
+    iconcoords {1629.6666666666667 43.0}
+    labelcoords {1629.6666666666667 75.0}
+    interface-peer {eth0 n15}
+    services {DefaultRoute SSH}
+}
+
+node n15 {
+    type lanswitch
+    network-config {
+	hostname n15
+	!
+    }
+    canvas c1
+    iconcoords {1510.0 46.0}
+    labelcoords {1510.0 70.0}
+    interface-peer {e0 n7}
+    interface-peer {e1 n13}
+}
+
+node n12 {
+    type router
+    model host
+    network-config {
+	hostname n12
+	!
+	interface eth0
+	 ipv6 address 2001:690:2280:821::2/64
+	!
+    }
+    canvas c1
+    iconcoords {70.0 877.0}
+    labelcoords {70.0 909.0}
+    interface-peer {eth0 n14}
+}
+
+node n14 {
+    type lanswitch
+    network-config {
+	hostname n14
+	!
+    }
+    canvas c1
+    iconcoords {262.0 870.0}
+    labelcoords {262.0 894.0}
+    interface-peer {e0 n6}
+    interface-peer {e1 n12}
+}
+
+node n23 {
+    type router
+    model host
+    network-config {
+	hostname n23
+	!
+	interface eth0
+	 ipv6 address 2001:690:2280:820::10/64
+	!
+    }
+    canvas c1
+    iconcoords {29.0 26.0}
+    labelcoords {29.0 58.0}
+    interface-peer {eth0 n24}
+    services {DefaultRoute SSH UserDefined}
+    custom-config {
+	custom-config-id service:UserDefined
+	custom-command UserDefined
+	config {
+	dirs=('/var/run/mysqld', '/var/run/NetworkManager', '/var/log/mysql', )
+	startidx=0
+	cmdup=('sudo /etc/init.d/mysql start', )
+	}
+    }
+}
+
+link l3 {
+    nodes {n2 n4}
+    bandwidth 0
+}
+
+link l4 {
+    nodes {n4 n6}
+    bandwidth 0
+}
+
+link l8 {
+    nodes {n3 n5}
+    bandwidth 0
+}
+
+link l9 {
+    nodes {n7 n5}
+    bandwidth 0
+}
+
+link l17 {
+    nodes {n22 n10}
+}
+
+link l18 {
+    nodes {n22 n11}
+}
+
+link l19 {
+    nodes {n22 n8}
+}
+
+link l20 {
+    nodes {n22 n9}
+}
+
+link l21 {
+    nodes {n22 n16}
+}
+
+link l22 {
+    nodes {n22 n17}
+}
+
+link l23 {
+    nodes {n22 n18}
+}
+
+link l24 {
+    nodes {n22 n19}
+}
+
+link l25 {
+    nodes {n22 n20}
+}
+
+link l26 {
+    nodes {n22 n21}
+}
+
+link l27 {
+    nodes {n22 n27}
+}
+
+link l28 {
+    nodes {n22 n28}
+}
+
+link l29 {
+    nodes {n22 n29}
+}
+
+link l30 {
+    nodes {n22 n26}
+}
+
+link l1 {
+    nodes {n1 n2}
+    bandwidth 0
+}
+
+link l2 {
+    nodes {n1 n3}
+    bandwidth 0
+}
+
+link l15 {
+    nodes {n1 n24}
+    bandwidth 0
+}
+
+link l10 {
+    nodes {n7 n10}
+    bandwidth 0
+}
+
+link l11 {
+    nodes {n7 n11}
+    bandwidth 0
+}
+
+link l12 {
+    nodes {n7 n15}
+    bandwidth 0
+}
+
+link l13 {
+    nodes {n15 n13}
+    bandwidth 0
+}
+
+link l5 {
+    nodes {n6 n14}
+    bandwidth 0
+}
+
+link l6 {
+    nodes {n14 n12}
+    bandwidth 0
+}
+
+link l7 {
+    nodes {n8 n6}
+    bandwidth 0
+}
+
+link l14 {
+    nodes {n6 n9}
+    bandwidth 0
+}
+
+link l16 {
+    nodes {n23 n24}
+    bandwidth 0
+}
+
+annotation a2 {
+    iconcoords {1398.0 9.0 1575.0 147.0}
+    type oval
+    label {}
+    labelcolor black
+    fontfamily {Arial}
+    fontsize {12}
+    color #04b0ff
+    width 0
+    border black
+    canvas c1
+}
+
+annotation a1 {
+    iconcoords {182 745 308 878}
+    type oval
+    label {}
+    labelcolor black
+    fontfamily {Arial}
+    fontsize {12}
+    color #e62c36
+    width 0
+    border black
+    canvas c1
+}
+
+canvas c1 {
+    name {Canvas1}
+    wallpaper-style {scaled}
+    wallpaper {/home/core/Documents/map.png}
+    refpt {0 0 47.5791667 -122.132322 2.0}
+    scale {150.0}
+    size {1864 998}
+}
+
+option global {
+    interface_names yes
+    ip_addresses no
+    ipv6_addresses yes
+    node_labels yes
+    link_labels no
+    show_api no
+    background_images no
+    annotations yes
+    grid no
+    traffic_start 0
+}
+
+option session {
+}
+
