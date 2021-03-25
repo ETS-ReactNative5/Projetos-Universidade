@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+ 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="./assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/libs/css/style.css">
+    <link rel="stylesheet" href="./assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <style>
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- login page  -->
+    <!-- ============================================================== -->
+    <div class="container">
+        <div class="card ">
+            <div class="card-header text-center"><span class="splash-description">Introduza os dados do cliente a monitorizar.</span></div>
+                <div class="card-body">
+                    <form id="form" data-parsley-validate="" novalidate="" method="GET" action="Dashboard">
+                        <div class="form-group row">
+                            <label for="inputEmail2" class="col-3 col-lg-2 col-form-label text-right">Endereço</label>
+                            <div class="col-9 col-lg-10">
+                                <input id="address" name="address" type="text" required="" placeholder="Endereço do cliente" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            
+                            <label for="inputPassword2" class="col-3 col-lg-2 col-form-label text-right">Porta</label>
+                            <div class="col-2 col-lg-3">
+                                <input id="port" name="port" type="number" min="0" required="" placeholder="Porta (161 por defeito)" class="form-control">
+                            </div>
+                            <label for="inputPassword2" class="col-5 col-lg-4 col-form-label text-right">Tempo de Monitorização</label>
+                            <div class="col-2 col-lg-3">
+                                <input id="time" name="time" type="text" required="" placeholder="00:00 (MM:SS)" class="form-control">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Monitorizar</button>
+                    </form>
+                </div>
+        </div>
+    </div>
+  
+    <!-- ============================================================== -->
+    <!-- end login page  -->
+    <!-- ============================================================== -->
+    <!-- Optional JavaScript -->
+    <script src="./assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="./assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+</body>
+ 
+</html>

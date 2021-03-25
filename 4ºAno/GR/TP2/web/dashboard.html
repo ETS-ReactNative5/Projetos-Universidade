@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="en">
+
+ 
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <script src="https://kit.fontawesome.com/24bb1e7397.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/libs/css/style.css">
+    <link rel="stylesheet" href="assets/vendor/charts/morris-bundle/morris.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="index.css">
+    <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+</head>
+
+<body>
+    <!-- ============================================================== -->
+    <!-- main wrapper -->
+    <!-- ============================================================== -->
+    <div class="dashboard-main-wrapper">
+	    <!-- ============================================================== -->
+	    <!-- navbar -->
+	    <!-- ============================================================== -->
+	    <div class="dashboard-header">
+	        <nav class="navbar navbar-expand-lg bg-white fixed-top">
+	            <a class="navbar-brand" href="index.html">Concept</a>
+	            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	                <span class="navbar-toggler-icon"></span>
+	            </button>
+	        </nav>
+	    </div>
+	    <!-- ============================================================== -->
+	    <!-- end navbar -->
+	    <!-- ============================================================== -->
+	    <!-- ============================================================== -->
+	    <!-- left sidebar -->
+	    <!-- ============================================================== -->
+	    <div class="nav-left-sidebar sidebar-dark">
+	        <div class="menu-list">
+	            <nav class="navbar navbar-expand-lg navbar-light">
+	                <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
+	                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	                    <span class="navbar-toggler-icon"></span>
+	                </button>
+	                <div class="collapse navbar-collapse" id="navbarNav">
+	                    <ul id="allClients" class="navbar-nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/GR"><i class="fas fa-power-off mr-2"></i>Sair</a>
+                                </li>
+	                        <li class="nav-divider">
+	                            Lista de Clientes
+	                        </li>
+                                
+	                    </ul>
+	                </div>
+	            </nav>
+	        </div>
+	    </div>
+	    <!-- ============================================================== -->
+	    <!-- end left sidebar -->
+	    <!-- ============================================================== -->
+	    <!-- ============================================================== -->
+	    <!-- wrapper  -->
+	    <!-- ============================================================== -->
+	    <div class="dashboard-wrapper">
+	        <div class="dashboard-influence">
+	            <div class="container-fluid dashboard-content">
+	                <!-- ============================================================== -->
+	                <!-- pageheader  -->
+	                <!-- ============================================================== -->
+	                <div class="row">
+	                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+	                        <div class="page-header">
+	                            <h3 class="mb-2">Monitorizar Agente</h3>
+	                        </div>
+	                    </div>
+	                </div>
+	                <!-- ============================================================== -->
+	                <!-- end pageheader  -->
+	                <!-- ============================================================== -->
+	                <!-- ============================================================== -->
+	                <!-- content  -->
+	                <!-- ============================================================== -->
+	                <!-- ============================================================== -->
+	                <!-- influencer profile  -->
+	                <!-- ============================================================== -->
+	                    <!-- ============================================================== -->
+	                    <!-- end influencer profile  -->
+	                    <!-- ============================================================== -->
+	                    <!-- ============================================================== -->
+	                    <!-- widgets   -->
+	                    <!-- ============================================================== -->
+	                    <div class="row">
+	                        <!-- ============================================================== -->
+	                        <!-- four widgets   -->
+	                        <!-- ============================================================== -->
+	                        <!-- ============================================================== -->
+	                        <!-- total views   -->
+	                        <!-- ============================================================== -->
+	                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+	                            <div class="card">
+	                                <div class="card-body">
+	                                    <div class="d-inline-block">
+	                                        <h5 class="text-muted">Dados</h5>
+                                                <h4 class="mb-0 d-inline">Endereço: </h4>
+                                                <h2 id="agentAddress"class="mb-0 d-inline pr-4"></h2>
+                                                
+                                                <h4 class="mb-0 d-inline">Porta: </h4>
+                                                <h2 id="agentPort" class="mb-0 d-inline"></h2>
+	                                    </div>
+	                                    <div class="float-right icon-circle-medium  icon-box-lg  bg-secondary-light mt-1">
+	                                        <i class="fas fa-user-cog fa-fw fa-sm text-secondary"></i>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <!-- ============================================================== -->
+	                        <!-- end total views   -->
+	                        <!-- ============================================================== -->
+	                        <!-- ============================================================== -->
+	                        <!-- total followers   -->
+	                        <!-- ============================================================== -->
+	                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+	                            <div class="card">
+	                                <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5">
+                                                    <div class="d-inline-block">
+                                                        <h5 class="text-muted">Tempo Ativo</h5>
+                                                        <h2 id="activeTime" class="mb-0"> -- </h2>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-5">
+                                                    <div class="d-inline-block">
+                                                        <h5 class="text-muted">Próxima Atualização</h5>
+                                                        <h2 id="nextUpdate" class="mb-0"> -- </h2>
+                                                    </div>                                                   
+                                                </div>
+                                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2">
+                                                    <div class="float-right icon-circle-medium  icon-box-lg  bg-primary-light mt-1">
+                                                        <i class="far fa-clock fa-fw fa-sm text-primary"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+	                                    
+	                                   
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <!-- ============================================================== -->
+	                        <!-- end total followers   -->
+	                        <!-- ============================================================== -->
+	                        <!-- ============================================================== -->
+	                        <!-- partnerships   -->
+	                        <!-- ============================================================== -->
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+	                            <div class="card">
+	                                <div class="card-body">
+	                                    <div class="d-inline-block">
+	                                        <h5 class="text-muted">Total processos ativos</h5>
+	                                        <h2 id="totalProcs" class="mb-0"> </h2>
+	                                    </div>
+	                                    <div class="float-right icon-circle-medium  icon-box-lg  bg-info-light mt-1">
+	                                        <i class="fa fa-cogs fa-fw fa-sm text-info"></i>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <!-- ============================================================== -->
+	                        <!-- end partnerships   -->
+	                        <!-- ============================================================== -->
+	                        <!-- ============================================================== -->
+	                        <!-- total earned   -->
+	                        <!-- ============================================================== -->
+	                        <!-- ============================================================== -->
+	                        <!-- end total earned   -->
+	                        <!-- ============================================================== -->
+	                    </div>
+	                    <!-- ============================================================== -->
+	                    <!-- end widgets   -->
+	                    <!-- ============================================================== -->
+	                    <div class="row">
+	                        <!-- ============================================================== -->
+	                        <!-- cpu processes   -->
+	                        <!-- ============================================================== -->
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="card">
+                                        <h5 class="card-header">Consumo de CPU (%)</h5>
+                                        <div class="card-body">
+                                            <canvas id="chartjs_pie_cpu"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+	                        <!-- ============================================================== -->
+	                        <!-- end cpu processes -->
+	                        <!-- ============================================================== -->
+	                        <!-- ============================================================== -->
+	                        <!-- ram processes   -->
+	                        <!-- ============================================================== -->
+	                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="card">
+                                        <h5 class="card-header">Consumo de Memória (MB)</h5>
+                                        <div class="card-body">
+                                            <canvas id="chartjs_pie_ram"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+	                        <!-- ============================================================== -->
+	                        <!-- end ram processes  -->
+	                        <!-- ============================================================== -->
+	                    </div>
+	                    <div class="row">
+	                        <!-- ============================================================== -->
+	                        <!-- campaign activities   -->
+	                        <!-- ============================================================== -->
+	                        <div class="col-lg-12">
+	                            <div class="section-block">
+	                                <h3 class="section-title">Processos ativos</h3>
+	                            </div>
+	                            <div class="card">
+	                                <div class="campaign-table table-responsive">
+	                                    <table id="table" class="table">
+	                                        <thead>
+	                                            <tr class="border-0">
+                                                        <th class="border-0"></th>
+	                                                <th class="border-0">Processo</th>
+	                                                <th class="border-0">Consumo CPU</th>
+	                                                <th class="border-0">Consumo Memória (MB)</th>
+	                                                <th class="border-0">Estado</th>
+                                                        <th class="border-0">Index</th>
+	                                            </tr>
+	                                        </thead>
+	                                        <tbody>
+	                                            
+	                                        </tbody>
+	                                    </table>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <!-- ============================================================== -->
+	                        <!-- end campaign activities   -->
+	                        <!-- ============================================================== -->
+	                    </div>
+	                                    <!-- ============================================================== -->
+	                                    <!-- end content  -->
+	                                    <!-- ============================================================== -->
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- footer -->
+                <!-- ============================================================== -->
+                <div class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                               Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="text-md-right footer-links d-none d-sm-block">
+                                    <a href="javascript: void(0);">About</a>
+                                    <a href="javascript: void(0);">Support</a>
+                                    <a href="javascript: void(0);">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- end footer -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- end wrapper  -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- end main wrapper  -->
+        <!-- ============================================================== -->
+        <!-- Optional JavaScript -->
+        <!-- jquery 3.3.1 -->
+        <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                var geralTime = 0;
+                var geralUpdateTime = 0;
+                var nextUpdate = 0;
+                var procsHistory;
+                var index = 0;
+                $('#nextUpdate').text(secondsTimeSpanToHMS(nextUpdate))
+                var ctx = document.getElementById("chartjs_pie_cpu").getContext('2d');
+                var myChartCPU = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: [],
+                        datasets: [{
+                            backgroundColor: [
+                               "#5969ff",
+                                "#ff407b",
+                                "#25d5f2",
+                                "#ffc750",
+                                "#2ec551",
+                                "#7040fa",
+                                "#ff004e",
+                                "#ffa600"
+                            ],
+                            data: []
+                        }]
+                    },
+                    options: {
+                            legend: {
+                            display: true,
+                            position: 'right',
+                            align:'center',
+                            labels: {
+                                fontColor: '#71748d',
+                                fontFamily: 'Circular Std Book',
+                                fontSize: 14,
+                            }
+                        }
+                    }
+                });
+                var ctx = document.getElementById("chartjs_pie_ram").getContext('2d');
+                var myChartRAM = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: [],
+                        datasets: [{
+                            backgroundColor: [
+                               "#5969ff",
+                                "#ff407b",
+                                "#25d5f2",
+                                "#ffc750",
+                                "#2ec551",
+                                "#7040fa",
+                                "#ff004e",   
+                                "#ffa600"
+                            ],
+                            data: []
+                        }]
+                    },
+                    options: {
+                            legend: {
+                            display: true,
+                            position: 'right',
+                            align:'center',
+                            labels: {
+                                fontColor: '#71748d',
+                                fontFamily: 'Circular Std Book',
+                                fontSize: 14,
+                            }
+                        }
+                    }
+                });
+                
+                var table = $('#table').DataTable({
+                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                    "columns": [
+                        {
+                            "className":      'details-control',
+                            "orderable":      false,
+                            "data":           null,
+                            "defaultContent": ''
+                        },
+                        null,
+                        null,
+                        null,
+                        null,
+                        {
+                            "visible": false,
+                            "searchable": false
+                        }
+                    ],
+                                    
+                });
+                    $('.dataTables_length').addClass('bs-select').addClass('p-3');
+                    $('.dataTables_filter').addClass('p-3');
+                    $('.dataTables_info').addClass('p-3');
+                    $('.dataTables_pagination').addClass('p-3');
+                    
+                $.ajax({
+                    type : 'GET',
+                    headers : {
+                            Accept : "application/json; charset=utf-8",
+                            "Content-Type" : "application/json; charset=utf-8"
+                    },
+                    url : 'Dashboard',
+                    data :{
+                        q: "getInfo",
+                    },
+                    success : function(result) {
+                        var info = $.parseJSON(result);
+                        geralTime = info.time;
+                        geralUpdateTime = info.nextUpdate;
+                        console.log(info)
+                        $('#agentAddress').text(info.address);
+                        $('#agentPort').text(info.port);
+                        setInterval(function(){
+                            console.log("repeat")
+                            geralTime++;
+                            $('#activeTime').text(secondsTimeSpanToHMS(geralTime));
+                            $('#activeTimeList').text(secondsTimeSpanToHMS(geralTime));
+                        }, 1000);
+                        $('#totalProcs').text(info.totalProcs);
+                        $('#totalProcsList').text(info.totalProcs);
+                        console.log(secondsTimeSpanToHMS(info.time));
+                    }
+                });
+                //ajax call to update clients list
+                $.ajax({
+                    type : 'GET',
+                    headers : {
+                            Accept : "application/json; charset=utf-8",
+                            "Content-Type" : "application/json; charset=utf-8"
+                    },
+                    url : 'Dashboard',
+                    data :{
+                        q: "getInfoClients",
+                    },
+                    success : function(result) {
+                        var infoClients = $.parseJSON(result);
+                        console.log(infoClients);
+                        if(infoClients) {
+                            $.each(infoClients, function(index, clients){
+                                var li = '<li class="nav-item">'+
+                                            '<div class="card">'+
+                                                '<div class="card-body">'+
+                                                    '<div class="row">'+
+                                                        '<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">'+
+                                                            '<div class="d-inline-block">'+
+                                                                '<h5 class="mb-0 d-inline text-muted">Endereço: </h5>'+
+                                                                '<h4 id="agentAddress"class="mb-0 d-inline pr-4">'+clients.address+'</h4>'+
+                                                                '<h5 class="mb-0 d-inline">Porta: </h5>'+
+                                                                '<h4 id="agentPort" class="mb-0 d-inline">'+clients.port+'</h4>'+
+                                                            '</div>'+
+                                                       '</div>'+
+                                                    '</div>'+
+                                                    '<div class="row">'+
+                                                        '<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">'+
+                                                            '<h5 class="mb-0 text-muted">T. Ativo </h5>'+
+                                                            '<h4 id="activeTimeList"class="mb-0 d-inline pr-4">'+clients.sysUpTime+'</h4>'+
+                                                        '</div>'+
+                                                        '<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">'+
+                                                            '<h5 class="mb-0 text-muted">Processos</h5>'+
+                                                            '<h4 id="totalProcsList"class="mb-0 d-inline pr-4">'+clients.numberProcs+'</h4>'+
+                                                        '</div>'+
+                                                        '</div>'+                                             
+                                                    '</div>'+
+                                                '</div>+'
+                                            '</div>'+
+                                        '</li>'
+                                $("#allClients").append(li)
+                            });
+                        }
+                        
+                    }
+                });
+                
+                // Add event listener for opening and closing details
+                $('#table tbody').on('click', 'td.details-control', function () {
+                    var tr = $(this).closest('tr');
+                    var row = table.row( tr );
+
+                    if ( row.child.isShown() ) {
+                        // This row is already open - close it
+                        row.child.hide();
+                        tr.removeClass('shown');
+                    }
+                    else {
+                        // Open this row
+                        row.child( format(row.data()[5]) ).show();
+                        loadChart(procsHistory[row.data()[5]], index);
+                        tr.addClass('shown');
+                    }
+                });
+                setInterval(function(){
+                    
+                    if(nextUpdate == 0){
+                        console.log("nextUpdate")
+                        $.ajax({
+                            type : 'GET',
+                            headers : {
+                                    Accept : "application/json; charset=utf-8",
+                                    "Content-Type" : "application/json; charset=utf-8"
+                            },
+                            url : 'Dashboard',
+                            data :{
+                                q: "getProcs",
+                            },
+                            success : function(result) {
+                                var index = 0;
+                                var i = 0;
+                                var procs = $.parseJSON(result);
+                                var mostCpuUsage = procs.mostCPUUsage;
+                                var mostRAMUsage = procs.mostRAMUsage;
+                                procsHistory = procs.history;
+                                $('#totalProcs').text(procs.length);
+                                console.log(procs.processes)
+                                table.clear();
+                                $.each(procs.processes, function(index, process) {
+                                    table.row.add( [
+                                        null,
+                                        process[0],
+                                        process[1],
+                                        parseFloat(process[2]/1024).toFixed(2),
+                                        process[3],
+                                        process[4],
+                                    ] ).draw( false );
+                                    i++;
+                                });
+                                console.log("CPU",mostCpuUsage)
+                                $.each(mostCpuUsage, function(name, cpuUsage) {
+                                    myChartCPU.data.labels[index] = name;
+                                    myChartCPU.data.datasets[0].data[index] = cpuUsage;
+                                    index++;
+                                });
+                                myChartCPU.update();
+                                index = 0;
+                                $.each(mostRAMUsage, function(name, ramUsage) {
+                                    myChartRAM.data.labels[index] = name;
+                                    myChartRAM.data.datasets[0].data[index] = parseFloat(ramUsage).toFixed(2);
+                                    index++;
+                                });
+                                myChartRAM.update();
+                                console.log("hhere");
+                                nextUpdate = geralUpdateTime;
+                                $('#nextUpdate').text(secondsTimeSpanToHMS(nextUpdate))
+                            }
+                        });
+                    }else{
+                        nextUpdate--;
+                        $('#nextUpdate').text(secondsTimeSpanToHMS(nextUpdate))
+                    }
+                    
+                },1000);
+                
+            });
+            function secondsTimeSpanToHMS(s) {
+                console.log("seconds: "+s)
+                var h = Math.floor(s/3600); //Get whole hours
+                s -= h*3600;
+                var m = Math.floor(s/60); //Get remaining minutes
+                s -= m*60;
+                return h+":"+(m < 10 ? '0'+m : m)+":"+(s < 10 ? '0'+s : s); //zero padding on minutes and seconds
+            }
+            
+            function format ( d ) {
+                // `d` is the original data object for the row
+                console.log(d)
+                return  '<div class="row justify-content-center">'+
+                            '<div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">'+
+                                '<div class="card">'+
+                                   '<h5 class="card-header">Bar Charts</h5>'+
+                                   '<div class="card-body">'+
+                                        '<div class="chart-container">'+
+                                             '<canvas id="chartjs_line"></canvas>'+
+                                         '</div>'+
+                                    '</div>'+
+                               '</div>'+
+                            '</div>'+
+                        '</div>';
+            }
+            function loadChart (procsHistory, index) {
+                console.log("history: ",procsHistory)
+                var ctx = document.getElementById("chartjs_line").getContext('2d');
+                var myChartLine = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: [],
+                        datasets: [{
+                            label: 'Comsumo CPU (%)',
+                            data: [],
+                            fill: false,
+                            backgroundColor: "rgba(89, 105, 255,0.5)",
+                                    borderColor: "rgba(89, 105, 255,0.7)",
+                            borderWidth: 2
+                        }, {
+                            label: 'Consumo RAM (%)',
+                            data: [],
+                            fill: false,
+                            backgroundColor: "rgba(255, 64, 123,0.5)",
+                                    borderColor: "rgba(255, 64, 123,0.7)",
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            yAxes: [{
+
+                            }]
+                        },
+                             legend: {
+                        display: true,
+                        position: 'bottom',
+
+                        labels: {
+                            fontColor: '#71748d',
+                            fontFamily: 'Circular Std Book',
+                            fontSize: 14,
+                        }
+                    },
+
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                fontSize: 14,
+                                fontFamily: 'Circular Std Book',
+                                fontColor: '#71748d',
+                            }
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                fontSize: 14,
+                                fontFamily: 'Circular Std Book',
+                                fontColor: '#71748d',
+                            }
+                        }]
+                    }
+                }
+                    
+                    
+                });
+                
+                console.log(procsHistory)
+                $.each(procsHistory, function(i, history) {
+                    console.log(history[0]+ " "+history[1]+" "+history[2] )
+                    myChartLine.data.labels[index] = history[2];
+                    myChartLine.data.datasets[0].data[index] = history[0];
+                    myChartLine.data.datasets[1].data[index] = parseFloat(history[1]).toFixed(2);
+                    myChartLine.update();
+                    index++;
+                });
+                
+            }
+        </script>
+        <!-- bootstap bundle js -->
+        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+        <!-- slimscroll js -->
+        <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+        <!-- main js -->
+        <script src="assets/libs/js/main-js.js"></script>
+        <!-- chart js -->
+        <script src="assets/vendor/charts/charts-bundle/Chart.bundle.js"></script>
+        <!-- dashboard js -->
+        <script src="assets/libs/js/dashboard-influencer.js"></script>
+</body>
+ 
+</html>
