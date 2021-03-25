@@ -70,11 +70,11 @@
   - [Project Folder](3ºAno/SD/Projeto)
 ### 4ºAno / 4th Year
 #### Gestão de Redes
-- **Projeto 1** 
-  - Familarização com SNMP / SNMP understanding
+- **Projeto 1** - Familarização com SNMP / SNMP understanding
   - [Project Report](4ºAno/GR/TP1/Relatório.pdf)
-- [**Projeto 2**](4ºAno/GR/TP2) ``Java, Web``
-  - Ferramenta SNMP para monitorização de Processos / SNMP tool for process monitoring
+- **Projeto 2** - Ferramenta SNMP para monitorização de Processos / SNMP tool for process monitoring ``Java, Web``
+  - [Project Report](4ºAno/GR/TP2/Relatório.pdf)
+  - [Project Folder](4ºAno/GR/TP1/Projeto)
 - [**Projeto 3**](4ºAno/GR/TP2) ``Java, Web``
   - Servidor musical com interface SNMP / Musical Server with SNMP interface
     > Construção de MIBs / MIB construction  
