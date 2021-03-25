@@ -73,9 +73,9 @@
 - **Projeto 1** 
   - Familarização com SNMP / SNMP understanding
   - [Project Report](4ºAno/GR/TP1/Relatório.pdf)
-- **Projeto 2** ``Java, Web``
+- [**Projeto 2**](4ºAno/GR/TP2) ``Java, Web``
   - Ferramenta SNMP para monitorização de Processos / SNMP tool for process monitoring
-- **Projeto 3** ``Java, Web``
+- [**Projeto 3**](4ºAno/GR/TP2) ``Java, Web``
   - Servidor musical com interface SNMP / Musical Server with SNMP interface
     > Construção de MIBs / MIB construction  
     > Gestor e Agente SNMP - biblioteca SNMP4J / SNMP Manager and Agent - SNMP4J Library
