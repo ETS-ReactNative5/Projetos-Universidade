@@ -1,0 +1,48 @@
+x,y = integer > 0
+
+* snmpset localhost:1337 MUSIC-MIB:musicScanFiles.0 = 1 -> scan files and update songs.txt
+* snmpget localhost:1337 MUSIC-MIB:musicScanTime.0 -> get time of the last scan
+
+* snmptable localhost:1337 MUSIC-MIB:musicPlayTable -Cb -> table with the current playing song info
+* snmpset localhost:1337 MUSIC-MIB:musicPlayGenre.0 = x -> play genre #x playlist
+* snmpset localhost:1337 MUSIC-MIB:musicPlayArtist.0 = x -> play artist #x playlist
+* snmpset localhost:1337 MUSIC-MIB:musicPlayAlbum.0 = x -> play album #x playlist
+* snmpset localhost:1337 MUSIC-MIB:musicPlaySong.0 = x -> play song #x
+* snmpset localhost:1337 MUSIC-MIB:musicPlaySong.0 = 0 -> play unspecified song from the current playlist
+* snmpset localhost:1337 MUSIC-MIB:musicPlayStatus.0 = x
+	-> x = 1 -> stop
+	-> x = 2 -> pause
+	-> x = 3 -> resume
+	-> x = 4 -> play previous
+	-> x = 5 -> replay
+	-> x = 6 -> skip
+* snmpset localhost:1337 MUSIC-MIB:musicPlayOrder.0 = x
+	-> x = 1 -> don't repeat playlist
+	-> x = 2 -> repeat playlist
+	-> x = 3 -> repeat song
+	-> x = 4 -> shuffle playlist
+* snmpset localhost:1337 MUSIC-MIB:musicPlayList.0 = x
+	-> x = 1 -> leave current playlist
+	-> x = 2 -> play current song's genre playlist
+	-> x = 3 -> play current song's artist playlist
+	-> x = 4 -> play current song's album playlist
+	-> x = 5 -> play favorites playlist
+
+* snmptable localhost:1337 MUSIC-MIB:musicTotalTable -Cb -> table with the total number of genres, artists, albums and songs
+
+* snmptable localhost:1337 MUSIC-MIB:musicGenreTable -Cb -> table with every genre and its number of artists, albums and songs
+
+* snmptable localhost:1337 MUSIC-MIB:musicArtistTable -Cb -> table with every artist, its genre and its number of albums and songs
+
+* snmptable localhost:1337 MUSIC-MIB:musicAlbumTable -Cb -> table with every album, its genre and artist and its number of songs
+
+* snmptable localhost:1337 MUSIC-MIB:musicSongTable -Cb -> table with every song and its genre, artist, album and technical info
+* snmpset localhost:1337 MUSIC-MIB:musicSongFavorited.y = x
+	-> x = 1 -> remove #y from favorites
+	-> x = 2 -> add #y to favorites
+
+* snmptable localhost:1337 MUSIC-MIB:musicHistoryTable -Cb -> table with every song played before the current one
+
+* snmptable localhost:1337 MUSIC-MIB:musicQueueTable -Cb -> table with every queued song
+* snmpset localhost:1337 MUSIC-MIB:musicQueueSong.y = x -> add song #x to the yth position of the queue
+* snmpset localhost:1337 MUSIC-MIB:musicQueueAdder.0 = x -> add song #x to the bottom of the queue

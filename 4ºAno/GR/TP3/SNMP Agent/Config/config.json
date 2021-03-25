@@ -1,0 +1,9 @@
+{
+	"community": "public",
+	"port": 1337,
+	"scanTime": "2020-02-10 15:49:22",
+	"songsDirectory": "/home/leandro/Documentos/GR/TP3/Musics",
+	"songsList": "/home/leandro/Documentos/GR/TP3/Config/songs.txt",
+	"favoritesList": "/home/leandro/Documentos/GR/TP3/Config/favorites.txt",
+	"logFile": "/home/leandro/Documentos/GR/TP3/Config/music.log"
+}

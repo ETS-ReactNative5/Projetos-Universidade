@@ -1,0 +1,1385 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Language" content="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Analytics Dashboard - This is an example dashboard created using build-in elements and components.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <meta name="description" content="This is an example dashboard created using build-in elements and components.">
+    <meta name="msapplication-tap-highlight" content="no">
+    <script src="https://kit.fontawesome.com/24bb1e7397.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"   
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous">
+    </script>
+    <!--
+    =========================================================
+    * ArchitectUI HTML Theme Dashboard - v1.0.0
+    =========================================================
+    * Product Page: https://dashboardpack.com
+    * Copyright 2019 DashboardPack (https://dashboardpack.com)
+    * Licensed under MIT (https://github.com/DashboardPack/architectui-html-theme-free/blob/master/LICENSE)
+    =========================================================
+    * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+    -->
+    <link href="Music/main.css" rel="stylesheet" type="text/css">
+    <link src="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="app-container app-theme-white body-tabs-shadow fixed-footer fixed-sidebar fixed-header">
+        <div class="app-header header-shadow bg-primary header-text-light">
+            <div class="app-header__logo">
+                <div class="logo-src"></div>
+                <div class="header__pane ml-auto">
+                    <div>
+                        <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="app-header__mobile-menu">
+                <div>
+                    <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="app-header__menu">
+                <span>
+                    <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                        <span class="btn-icon-wrapper">
+                            <i class="fa fa-ellipsis-v fa-w-6"></i>
+                        </span>
+                    </button>
+                </span>
+            </div>
+            <div class="app-header__content">
+                <form class="form-inline">
+                    <div class="mb-2 mr-sm-2 mb-sm-0 position-relative form-group"><label for="address" class="mr-sm-2 text-white">Endereço</label><input name="port" id="address" placeholder="localhost" type="text" class="form-control-sm form-control"></div>
+                    <div class="mb-2 mr-sm-2 mb-sm-0 position-relative form-group"><label for="port" class="mr-sm-2 text-white">Porta</label><input name="port" id="port" placeholder="1337" type="number" class="form-control-sm form-control"></div>
+                    <button class="btn btn-light">Submeter</button>
+                </form>
+                
+            </div>
+        </div>        
+        <div class="app-main">
+                <div class="app-sidebar sidebar-shadow">
+                    <div class="app-header__logo">
+                        <div class="logo-src"></div>
+                        <div class="header__pane ml-auto">
+                            <div>
+                                <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                                    <span class="hamburger-box">
+                                        <span class="hamburger-inner"></span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="app-header__mobile-menu">
+                        <div>
+                            <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="app-header__menu">
+                        <span>
+                            <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                                <span class="btn-icon-wrapper">
+                                    <i class="fa fa-ellipsis-v fa-w-6"></i>
+                                </span>
+                            </button>
+                        </span>
+                    </div>    
+                        <div class="scrollbar-sidebar">
+                        <div class="app-sidebar__inner">
+                            <button id="btnRefresh" data-scan="false" class="mb-2 mt-2 btn-transition btn btn-outline-primary btn-block">ESCANEAR MÚSICAS</button>
+                            <div class="opacity-8 text-muted text-center">Último em <span id="scanTime" style="font-weight: bold"></span></div>
+                            <ul class="vertical-nav-menu">
+                                
+                                <li class="app-sidebar__heading">A minha biblioteca</li>
+                                <li>
+                                    <a href="#" data-target="songs" class="mm-active">
+                                        <i class="metismenu-icon fas fa-music" style="opacity: unset"></i>
+                                        Músicas
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" data-target="liked" >
+                                        <i class="metismenu-icon fas fa-heart" style="opacity: unset"> </i>
+                                        Favoritos
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" data-target="albums">
+                                        <i class="metismenu-icon fas fa-compact-disc" style="opacity: unset"></i>
+                                        Álbums
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" data-target="artists" >
+                                        <i class="metismenu-icon fas fa-user-friends" style="opacity: unset"></i>
+                                        Artistas
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" data-target="genres" >
+                                        <i class="metismenu-icon fas fa-guitar" style="opacity: unset"></i>
+                                        Géneros
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>    <div id="mainContainer" class="app-main__outer">
+                    <div class="app-main__inner" data-id="songs">
+                        <div class="app-page-title">
+                            <div class="page-title-wrapper">
+                                <div class="page-title-heading">
+                                    <div class="page-title-icon">
+                                        <i class="pe-7s-musiclist icon-gradient bg-mean-fruit">
+                                        </i>
+                                    </div>
+                                    <div>
+                                        As minhas músicas
+                                        <div id="songsTotal" class="page-title-subheading">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>            
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="main-card mb-3 card">
+                                    <div class="card-body">                                
+                                        <div class="search-wrapper active mb-2 w-100">
+                                            <div class="input-holder w-100">
+                                                <input type="text" class="search-input" placeholder="Pesquisar música" id="songsSearch" onkeyup="searchSong('songsTable','songsSearch')">
+                                                <button class="search-icon"><span></span></button>
+                                            </div>
+                                        </div>
+                                        <table class="mb-0 table table-hover" id="songsTable">
+                                            <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Nome</th>
+                                                <th>Artista</th>
+                                                <th>Álbum</th>
+                                                <th>Duração</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="app-main__inner d-none" data-id="liked">
+                        <div class="app-page-title">
+                            <div class="page-title-wrapper">
+                                <div class="page-title-heading">
+                                    <div class="page-title-icon">
+                                        <i class="pe-7s-like icon-gradient bg-mean-fruit">
+                                        </i>
+                                    </div>
+                                    <div>
+                                        Favoritos
+                                        <div  class="page-title-subheading d-flex align-items-center" style="opacity: 1">
+                                            <div id="favoriteTotal" style="opacity: .6"></div>
+                                                <button id="btnPlayAlbum" data-id="5" data-type="favorite" class="ml-2 btn btn-outline-primary btn-sm"><span id="play" class="play fas fa-play" aria-hidden="true"></span>
+                                            </button> 
+                                        </div>
+                                        <div id="favoriteTotal" class="page-title-subheading">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>            
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="main-card mb-3 card">
+                                    <div class="card-body">
+                                        <div class="search-wrapper active mb-2 w-100">
+                                            <div class="input-holder w-100">
+                                                <input type="text" class="search-input" placeholder="Pesquisar música" id="songsfavSearch" onkeyup="searchSong('favTable','songsfavSearch')">
+                                                <button class="search-icon"><span></span></button>
+                                            </div>
+                                            </div>
+                                        <table class="mb-0 table table-hover" id="favTable">
+                                            <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Nome</th>
+                                                <th>Artista</th>
+                                                <th>Álbum</th>
+                                                <th>Duração</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                    
+                    <div class="app-main__inner d-none" data-id="albums"> 
+                        <div class="app-page-title">
+                            <div class="page-title-wrapper">
+                                <div class="page-title-heading">
+                                    <div class="page-title-icon">
+                                        <i class="pe-7s-disk icon-gradient bg-happy-itmeo">
+                                        </i>
+                                    </div>
+                                    <div>
+                                        Álbuns
+                                        <div id="albumsTotal" class="page-title-subheading"> </div>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                        <div id="albumsDiv" class="row">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="app-main__inner d-none" data-id="artists"> 
+                        <div class="app-page-title">
+                            <div class="page-title-wrapper">
+                                <div class="page-title-heading">
+                                    <div class="page-title-icon">
+                                        <i class="pe-7s-users icon-gradient bg-happy-itmeo">
+                                        </i>
+                                    </div>
+                                    <div>
+                                        Artistas
+                                        <div id="artistsTotal" class="page-title-subheading"> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div id="artistsDiv" class="row">
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="app-main__inner d-none" data-id="genres"> 
+                        <div class="app-page-title">
+                            <div class="page-title-wrapper">
+                                <div class="page-title-heading">
+                                    <div class="page-title-icon">
+                                        <i class="pe-7s-users icon-gradient bg-happy-itmeo">
+                                        </i>
+                                    </div>
+                                    <div>Géneros
+                                        <div id="genresTotal" class="page-title-subheading"> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <div id="genresDiv" class="row">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="app-main__inner d-none" data-id="queue">
+                        <div class="app-page-title">
+                            <div class="page-title-wrapper">
+                                <div class="page-title-heading">
+                                    <div class="page-title-icon">
+                                        <i class="pe-7s-musiclist icon-gradient bg-mean-fruit">
+                                        </i>
+                                    </div>
+                                    <div>
+                                        Músicas em fila
+                                        <div  class="page-title-subheading d-flex align-items-center" style="opacity: 1">
+                                            <div id="queueSongsTotal" style="opacity: .6"></div>
+                                            <button id="btnCleanQueue" class="ml-2 btn btn-outline-primary btn-sm">ESVAZIAR
+                                    </button> 
+                                        </div>
+                                    </div>
+                                    <div>
+                                        
+                                    </div>
+                                      
+                                </div>
+                            </div>
+                        </div>            
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="main-card mb-3 card">
+                                    <div class="card-body">
+                                        <table class="mb-0 table table-hover" id="queueTable">
+                                            <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Nome</th>
+                                                <th>Artista</th>
+                                                <th>Álbum</th>
+                                                <th>Duração</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                    
+                    <div class="app-wrapper-footer">
+                        <div class="app-footer">
+                            <div class="app-footer__inner">
+                                <div class="col-lg-12 text-center">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-2">
+                                            <div>
+                                                <div class="card-body text-left mb-0 pb-0 pt-0">
+                                                    <h5 id="songName" class="card-title"></h5>
+                                                    <h6 id="songArtistName" class="card-subtitle mb-0"></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-7">
+                                            <div role="group" class="shuffle btn-group-lg btn-group btn-group-toggle" data-toggle="buttons">
+                                            <button id="btnShuffle" type="button" class="btn btn-icon" data-toggle="button" aria-pressed="false">
+                                                <span class="fas fa-random" aria-hidden="true"></span>
+                                            </button>
+                                        </div>
+                                        <div role="group" class="btn-group" data-toggle="buttons">
+                                            <button id="previousSong" class="font-size-lg  btn btn-icon-only ">
+                                               <span class="fas fa-step-backward" aria-hidden="true"></span>
+                                            </button>
+                                            <button id="musicControl" class="font-size-xlg btn btn-icon-only">
+                                               <span id="resume" class="play fas fa-play" aria-hidden="true"></span>
+                                               <span id="pause" class=" pause fas fa-pause d-none" aria-hidden="true"></span>
+                                            </button>
+                                            <button id="skipSong" class="font-size-lg btn btn-icon-only">
+                                                <span class="fas fa-step-forward" aria-hidden="true"></span>
+                                            </button>
+                                        </div>
+                                        <div role="group" class="repeat btn-group-lg btn-group btn-group-toggle" data-toggle="buttons">
+                                            <button id="btnRepeat" type="button" class="btn btn-icon d-flex" data-toggle="button" aria-pressed="false">
+                                                <i id="0" class="material-icons" style="font-weight: bold">repeat</i>
+                                                <i id="1" class="material-icons d-none" style="font-weight: bold">repeat_one</i>
+                                                <i id="2" class="material-icons d-none" style="font-weight: bold">repeat</i>
+                                            </button>
+
+                                        </div>
+                                            <div class="d-flex align-items-center justify-content-center">
+                                                <span id="timeSongNow">0:00</span>
+                                                <div class="col-lg-10">
+                                                    <div class="progress" style="height: 5px;">
+                                                        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+                                                    </div>  
+                                                </div>
+                                                <span id="timeSongTotal">0:00</span>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div>
+                                                <div class="card-body d-flex justify-content-end align-items-center mb-0 pb-0 pt-0">
+                                                    <div id="playlistCard" class="card-body text-left mb-0 pb-0 pt-0">
+                                                        <h6 class="card-subtitle mb-1">Playlist</h6>
+                                                        <h5 id="playlistName" class="card-title mb-0"></h5>
+                                                    </div>
+                                                    <button id="btnQueue" type="button" class="btn btn-icon d-flex" data-toggle="button" aria-pressed="false">
+                                                        <i class="material-icons" style="font-weight: bold; font-size: 40px">playlist_play</i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>    </div>
+                <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        </div>
+    </div>
+    <!-- Jquery/Scripts -->
+    <script type="text/javascript" src="/Music/assets/scripts/main.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script>
+        var currentTime = 0;
+        var songInterval;
+        var songTime;
+        var repeatSong = false;
+        var refreshInterval;
+        $(document).ready(function() {
+            playSong();
+            getSongs();
+            getAlbums();
+            getArtists();
+            getGenres();
+            getQueueSongs();
+            $.ajax({
+                type : 'GET',
+                url : '/Music',
+                data :{
+                    q: "scanTime"
+                },
+                success : function(result) {
+                    var time = $.parseJSON(result);
+                    $('#scanTime').text(time.time);
+                    
+                }
+            });
+            //change active sidebar tab
+            $('[data-target]').click(function(){
+                var target = $(this).data('target');
+                $('.vertical-nav-menu .mm-active').removeClass('mm-active')
+                $(this).addClass('mm-active')
+                $( '.app-main__inner' ).addClass('d-none');
+                $( '.app-main__inner[data-id="' + target + '"]').removeClass("d-none");
+                $("#albumSongsDiv").remove();
+                $("#albumsArtistDiv").remove();
+                $("#songsGenreDiv").remove();
+            });
+            
+            //refresh musics
+            $('#btnRefresh').click(function(){
+                $(this).html(
+                    `<span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>A ESCANEAR...`
+                );
+                $(this).attr('disabled', true);
+                $.ajax({
+                    type : 'GET',
+                    url : '/Music',
+                    data :{
+                        q: "refresh",
+                        scan: true,
+                    },
+                    success : function(result) {
+                        $('#btnRefresh').data('scan','true');
+                        refreshInterval = setInterval(refreshSongs,1000);
+                    }
+                });
+                    
+            });
+            //play/pause song from player
+            $('#musicControl').click(function() {
+                console.log("Music")
+                
+                var status = $(this).children().filter(':not(.d-none)').attr('id');
+                console.log($(this).children().filter(':not(.d-none)').attr('id'))
+                $(this).find('span').toggleClass("d-none");
+                statusSong( status );
+                
+            });
+            
+            //skip song from player
+            $("#skipSong").click(function(){
+                console.log("skip")
+                console.log($('#musicControl').children().filter('.d-none').attr('id'))
+                var previousStatus = $('#musicControl').children().filter('.d-none').attr('id');
+                if(previousStatus === 'pause'){
+                    $('#musicControl').find('span').toggleClass("d-none");
+                }
+                skipSong('skip');
+                
+            });
+            $("#previousSong").click(function(){
+                console.log("previous");
+                var previous = 'previous';
+                var previousStatus = $('#musicControl').children().filter('.d-none').attr('id');
+                if(previousStatus === 'pause'){
+                    $('#musicControl').find('span').toggleClass("d-none");
+                }
+                if(currentTime > 1){
+                    previous = 'sameSong';
+                }
+                skipSong(previous);
+            });
+            $('#previousSong').dblclick(function(){
+                 skipSong('previous');
+            })
+            //enable/disable repeat 
+            $("#btnRepeat").click(function(){
+                if (!$(this).find('i#0').hasClass('d-none')) {
+                    $(this).find('i#0').addClass('d-none');
+                    $(this).find('i#2').removeClass('d-none');
+                    $(this).addClass('active')
+                    console.log("repeat playlist")
+                    statusSong('repeat', 2 );
+                } else if (!$(this).find('i#1').hasClass('d-none')) {
+                    $(this).find('i#1').addClass('d-none');
+                    $(this).find('i#0').removeClass('d-none');
+                    $(this).addClass('active')
+                    console.log("NOT repeat song")
+                    statusSong('repeat', 1);
+                } else if (!$(this).find('i#2').hasClass('d-none')) {
+                    $(this).find('i#2').addClass('d-none');
+                    $(this).find('i#1').removeClass('d-none');
+                    $(this).removeClass('active')
+                    
+                    console.log("repeatSong")
+                    statusSong('repeat', 3);
+                }
+                var isShuffleActive =  $('#btnShuffle').hasClass('active');
+                console.log(isShuffleActive)
+                if(isShuffleActive === true) {
+                    $('#btnShuffle').toggleClass('active');
+                    //$(this).children().addClass('d-none');
+                    //$(this).find('i#0').removeClass('d-none');
+                }
+            });
+            
+            //enable/disable shuffle
+            $("#btnShuffle").click(function(){
+                $(this).toggleClass('active');
+                var isRepeatActive =  $('#btnRepeat').hasClass('active');
+                console.log(isRepeatActive)
+                if(isRepeatActive === true) {
+                    $('#btnRepeat').toggleClass('active');
+                    $('#btnRepeat').children().addClass('d-none');
+                    $('#btnRepeat').find('i#0').removeClass('d-none');
+                }
+                var isActive = $(this).hasClass('active');
+                if(isActive){
+                    console.log("shufle playlist")
+                    statusSong('shuffle', 4);
+                }else{
+                    console.log(" NOT shuffle")
+                    statusSong('repeat', 1);
+                } 
+            });
+            
+            //open songs in queue
+            $("#btnQueue").click(function(){
+                $('.vertical-nav-menu .mm-active').removeClass('mm-active');
+                $( '.app-main__inner' ).addClass('d-none');
+                $( '.app-main__inner[data-id="queue"]').removeClass("d-none");
+                
+            });
+            
+            $('#btnCleanQueue').click(function(){
+                $.ajax({
+                type : 'GET',
+                    headers : {
+                            Accept : "application/json; charset=utf-8",
+                            "Content-Type" : "application/json; charset=utf-8"
+                    },
+                    url : '/Music',
+                    data :{
+                        q: "clearQueue",
+                    },
+                    success : function() {
+                        console.log("result")
+                        getQueueSongs();
+                    }
+                }); 
+            });
+            //play song from table
+            $(document).on('click', '#btnSongTable',function(){
+                console.log($(this).data('id'))
+                console.log($(this).data('length'))
+                var time = toSeconds($(this).data('length'));
+                console.log(time)
+                var index = $(this).data('id');
+                var songName = $('#songsTable tr').eq(index).find("td").eq(1).html();
+                var artistName = $('#songsTable tr').eq(index).find("td").eq(2).html()
+                $('#songName').text(songName);
+                $('#songArtistName').text(artistName);
+                clearInterval(songInterval);
+                statusSong( 'play', index, time);
+                
+            });
+            
+            //play song from album
+            $(document).on('click', '#btnPlayAlbum',function(){
+                console.log($(this).data('id'));
+                console.log($(this).data('type'))
+                var index = $(this).data('id');
+                var type = $(this).data('type');
+                startPlaylist(type, index);
+                
+            });
+            
+            //Add/remove favorites
+            $(document).on('click', '#btnSongFavTable',function(){
+                console.log($(this).data('id'));
+                console.log("before: "+$(this).data('favorite'));
+                $(this).find('span').toggleClass("d-none");
+                var index = $(this).data('id');
+                var remove = $(this).data('remove');
+                console.log(remove)
+                if(remove === true){
+                    $('#songsTable tr').eq(index).find("td").eq(0).find('#btnSongFavTable').find('span').toggleClass("d-none")
+                }
+                var favorite = $(this).children().filter(':not(.d-none)').attr('id');
+                console.log()
+
+                console.log("after "+favorite)
+                $.ajax({
+                        type : 'GET',
+                        headers : {
+                                Accept : "application/json; charset=utf-8",
+                                "Content-Type" : "application/json; charset=utf-8"
+                        },
+                        url : '/Music',
+                        data :{
+                            q: "addFavorite",
+                            index: index,
+                            favorite: favorite
+                            
+                        },
+                        success : function(result) {
+                            console.log($.parseJSON(result))
+                            var songs = $.parseJSON(result);
+                            var rows = "";
+                            $('#favTable tbody').empty();
+                            $.each(songs, function(){
+                            rows += `<tr>
+                                            <td> 
+                                                <div class="d-flex flex-row"> 
+                                                    <button id="btnSongTable" data-id="${this.index}" data-length="${this.length.split('.')[0]}" class="mb-2 mr-2 btn btn-primary">
+                                                        <span id="play" class="play fas fa-play" aria-hidden="true"></span>
+                                                    </button> 
+                                                    <button id="btnSongFavTable" data-remove="true" data-id="${this.index}" data-favorite="${this.favorite}" class="mb-2 mr-2 btn btn-icon">
+                                                        <span id="1" class="d-none far fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>
+                                                        <span id="2" class="fas fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>
+                                                    </button>
+                                                    <button id="btnAddtoQueue" data-id="${this.index}" class="mr-2 btn btn-icon-only">
+                                                        <i id="queue" class="material-icons" style="font-size: 25px">playlist_add</i>
+                                                    </button>
+                                                </div> 
+                                                </td><td>${this.name}</td><td>${this.artist}</td><td>${this.album}</td><td>${this.length.split('.')[0]}</td></tr>`;
+                            });
+
+                            $( rows ).appendTo( "#favTable tbody" );
+                            $('#favoriteTotal').text(Object.keys(songs).length+ " músicas");
+                        }
+                });
+            });
+            
+            //Add/remove to queue
+            $(document).on('click', '#btnAddtoQueue',function(){
+                console.log("remove: "+$(this).hasClass('remove'))
+                var remove = false;
+                if($(this).hasClass('remove')){
+                    remove = true;
+                    
+                }
+                var index = $(this).data('id');
+                console.log(index)
+                $.ajax({
+                        type : 'GET',
+                        headers : {
+                                Accept : "application/json; charset=utf-8",
+                                "Content-Type" : "application/json; charset=utf-8"
+                        },
+                        url : '/Music',
+                        data :{
+                            q: "addToQueue",
+                            index: index,
+                            remove: remove
+                        },
+                        success : function(result) {
+                            console.log($.parseJSON(result))
+                            var queue = $.parseJSON(result);
+                            var rows = '';
+                            $('#queueTable tbody').empty();
+                            $.each(queue, function(){
+                                var favorites;
+                                if(this.favorite === 1){
+                                    favorites = `<span id="1" class="far fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>
+                                                 <span id="2" class="d-none fas fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>`;
+
+                                }else{
+                                    favorites = `<span id="1" class="d-none far fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>
+                                                 <span id="2" class="fas fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>`;
+                                }
+                                rows += `<tr>
+                                            <td> 
+                                                <div class="d-flex flex-row">
+                                                    <button id="btnSongFavTable" data-id="${this.index}" data-favorite="${this.favorite}" class="mb-2 mr-2 btn btn-icon">
+                                                        ${favorites}
+                                                    </button>
+                                                    <button id="btnAddtoQueue" data-id="${this.index}" class="remove mr-2 btn btn-icon-only">
+                                                        <i id="queue" class="material-icons" style="font-size: 25px">remove</i>
+                                                    </button>
+                                                </div> 
+                                                </td><td>${this.name}</td><td>${this.artist}</td><td>${this.album}</td><td>${this.length.split('.')[0]}</td></tr>`;
+                            });
+
+                        $( rows ).appendTo( "#queueTable tbody" );
+                        $("#queueSongsTotal").text(Object.keys(queue).length+ " músicas")
+                    
+                    }
+                });
+            });
+            
+            //Load specific albums music
+            $(document).on('click','#btnAlbum',function(){
+                var artistName = $(this).data('artist');
+                var albumName = $(this).data('album');
+                $( '.app-main__inner' ).addClass('d-none');
+                $("#mainContainer").append($('<div id="albumSongsDiv">').load('/Music/album.html #mainContainer', function() {
+                    
+                    $('#albumTitle').text(albumName);
+                    $('#albumSubtitle').text(artistName)
+                    $.ajax({
+                        type : 'GET',
+                        headers : {
+                                Accept : "application/json; charset=utf-8",
+                                "Content-Type" : "application/json; charset=utf-8"
+                        },
+                        url : '/Music',
+                        data :{
+                            q: "albumSongs",
+                            album: albumName
+                        },
+                        success : function(result) {
+                            console.log($.parseJSON(result))
+                            var songs = $.parseJSON(result);
+                            var rows = "";
+                            $.each(songs, function(){
+                                var favorites;
+                                if(this.favorite === 1){
+                                    favorites = `<span id="1" class="far fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>
+                                                 <span id="2" class="d-none fas fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>`;
+
+                                }else{
+                                    favorites = `<span id="1" class="d-none far fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>
+                                                 <span id="2" class="fas fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>`;
+                                }
+                                rows += `<tr><td> 
+                                                <button id="btnSongTable" data-id="${this.index}" data-length="${this.length.split('.')[0]}" class="mb-2 mr-2 btn btn-outline-primary">
+                                                    <span id="play" class="play fas fa-play" aria-hidden="true"></span>
+                                                </button>
+                                                <button id="btnSongFavTable" data-id="${this.index}" data-favorite="${this.favorite}" class="mb-2 mr-2 btn btn-icon">
+                                                    ${favorites}
+                                                </button>
+                                                <button id="btnAddtoQueue" data-id="${this.index}" class="mr-2 btn btn-icon-only">
+                                                    <i id="queue" class="material-icons" style="font-size: 25px">playlist_add</i>
+                                                </button>  
+                                        </td><td>${this.name}</td><td>${this.length.split('.')[0]}</td></tr>`;
+                            });
+
+                            $( rows ).appendTo( "#songsTable tbody" );
+                        }
+                    });
+                }));
+                
+            
+                
+            });
+            
+            //Load specific genre music
+            $(document).on('click','#btnGenre',function(){
+                var genreName = $(this).data('genre');
+                $( '.app-main__inner' ).addClass('d-none');
+                $("#mainContainer").append($('<div id="songsGenreDiv">').load('/Music/genre.html #mainContainer', function() {
+                    $('#genreTitle').text(genreName);
+                    $.ajax({
+                        type : 'GET',
+                        headers : {
+                                Accept : "application/json; charset=utf-8",
+                                "Content-Type" : "application/json; charset=utf-8"
+                        },
+                        url : '/Music',
+                        data :{
+                            q: "genreSongs",
+                            genre: genreName
+                        },
+                        success : function(result) {
+                            console.log($.parseJSON(result))
+                            var songs = $.parseJSON(result);
+                            var rows = "";
+                            var preDiv = `<div class="col-lg-12">
+                                        <div class="main-card mb-3 card">
+                                            <div class="card-body"><h5 class="card-title"></h5>
+                                                <table class="mb-0 table table-hover" id="songsTable">
+                                                    <thead>
+                                                    <tr>    
+                                                        <th></th>
+                                                        <th>Nome</th>
+                                                        <th>Artista</th>
+                                                        <th>Álbum</th>
+                                                        <th>Duração</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>`;
+                                $.each(songs, function() {
+                                    if(this.favorite === 1){
+                                        favorites = `<span id="1" class="far fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>
+                                                     <span id="2" class="d-none fas fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>`;
+
+                                    }else{
+                                        favorites = `<span id="1" class="d-none far fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>
+                                                     <span id="2" class="fas fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>`;
+                                    }
+                                    rows += `<tr>
+                                                <td>
+                                                    <button id="btnSongTable" data-id="${this.index}" data-length="${this.length.split('.')[0]}" class="mb-2 mr-2 btn btn-outline-primary">
+                                                        <span id="play" class="play fas fa-play" aria-hidden="true"></span>
+                                                    </button>
+                                                    <button id="btnSongFavTable" data-id="${this.index}" data-favorite="${this.favorite}" class="mb-2 mr-2 btn btn-icon">
+                                                        ${favorites}
+                                                    </button>
+                                                    <button id="btnAddtoQueue" data-id="${this.index}" class="mr-2 btn btn-icon-only">
+                                                        <i id="queue" class="material-icons" style="font-size: 25px">playlist_add</i>
+                                                    </button>
+                                                </td><td>${this.name}</td><td>${this.artist}</td><td>${this.album}</td><td>${this.length.split('.')[0]}</td></tr>`;
+                                })
+                                var posDiv = `</tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>`;
+
+                            $( '#songsGenreDiv').append(preDiv + rows + posDiv);
+                            $('#genreSubtitle').text(Object.keys(songs).length+" músicas");
+                        }
+                    });
+                }));
+                
+            
+                
+            });
+            
+            //Load all albums of clicked artist
+            $(document).on('click','#btnArtist',function(){
+                var artistName = $(this).data('artist');
+                $( '.app-main__inner' ).addClass('d-none');
+                $("#mainContainer").append($('<div id="albumsArtistDiv">').load('/Music/artist.html #mainContainer', function() {
+                    $('#artistTitle').text(artistName)
+                    $.ajax({
+                        type : 'GET',
+                        headers : {
+                                Accept : "application/json; charset=utf-8",
+                                "Content-Type" : "application/json; charset=utf-8"
+                        },
+                        url : '/Music',
+                        data :{
+                            q: "artistSongs",
+                            artist: artistName
+                        },
+                        success : function(result) {
+                            console.log($.parseJSON(result))
+                            var artistAlbum = $.parseJSON(result);
+                            var rows = "";
+                            $.each(artistAlbum, function(){
+                                console.log(this.albumSongs)
+                                var preDiv = `<div class="col-lg-6">
+                                        <div class="main-card mb-3 card">
+                                            <div class="card-body"><h5 class="card-title" style="font-style: ${this.album === 0 ?'italic' :'unset'}">${this.album === 0 ?'Sem álbum' : this.album}</h5>
+                                                <table class="mb-0 table table-hover" id="songsTable">
+                                                    <thead>
+                                                    <tr>    
+                                                        <th></th>
+                                                        <th>Nome</th>
+                                                        <th>Duração</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>`;
+                                $.each(this.albumSongs, function() {
+                                    rows = "";
+                                    var favorites;
+                                    if(this.favorite === 1){
+                                        favorites = `<span id="1" class="far fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>
+                                                     <span id="2" class="d-none fas fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>`;
+
+                                    }else{
+                                        favorites = `<span id="1" class="d-none far fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>
+                                                     <span id="2" class="fas fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>`;
+                                    }
+                                    rows += `<tr>
+                                                <td>
+                                                    <button id="btnSongTable" data-id="${this.index}" data-length="${this.length.split('.')[0]}" class="mb-2 mr-2 btn btn-outline-primary">
+                                                        <span id="play" class="play fas fa-play" aria-hidden="true"></span>
+                                                    </button>
+                                                     <button id="btnSongFavTable" data-id="${this.index}" data-favorite="${this.favorite}" class="mb-2 mr-2 btn btn-icon">
+                                                        ${favorites}
+                                                    </button>
+                                                    <button id="btnAddtoQueue" data-id="${this.index}" class="mr-2 btn btn-icon-only">
+                                                        <i id="queue" class="material-icons" style="font-size: 25px">playlist_add</i>
+                                                    </button> 
+                                                </td><td>${this.name}</td><td>${this.length.split('.')[0]}</td></tr>`;
+                                })
+                                var posDiv = `</tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>`;
+                                
+                               $( '#albumArtistDiv').append(preDiv + rows + posDiv);
+                            });
+                            
+                        }
+                    });
+                }));
+            });
+            
+            
+        });
+        function refreshSongs(){
+            console.log("REFRESH")
+            $.ajax({
+                type : 'GET',
+                url : '/Music',
+                data :{
+                    q: "refresh",
+                    scan: false,
+                },
+                success : function(result) {
+                    var status = $.parseJSON(result);
+                    console.log(status);
+                    if(status.status === 1){
+                        getSongs();
+                        getAlbums();
+                        getArtists();
+                        getGenres();
+                        getQueueSongs();
+                        
+                        clearInterval(refreshInterval)
+                        $('#btnRefresh').data('scan','false');
+                        console.log( $('#btnRefresh').data('scan'))
+                        $('#btnRefresh').html('ESCANEAR MÚSICAS');
+                        $('#btnRefresh').attr('disabled', false);
+                        $('#scanTime').text(status.time);
+                        
+                    }
+                    
+                }
+            });
+        }
+        function getSongs(){
+            $.ajax({
+                type : 'GET',
+                headers : {
+                        Accept : "application/json; charset=utf-8",
+                        "Content-Type" : "application/json; charset=utf-8"
+                },
+                url : '/Music',
+                data :{
+                    q: "songs",
+                },
+                success : function(result) {
+                    console.log($.parseJSON(result))
+                    var songs = $.parseJSON(result);
+                    var rows = "";
+                    var rowsFav = "";
+                    var favTotal = 0;
+                    $('#songsTable tbody').empty();
+                    $('#favTable tbody').empty();
+                    $.each(songs, function(){
+                        var favorites;
+                        if(this.favorite === 1){
+                            favorites = `<span id="1" class="far fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>
+                                         <span id="2" class="d-none fas fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>`;
+                            
+                        }else{
+                            favTotal++;
+                            favorites = `<span id="1" class="d-none far fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>
+                                         <span id="2" class="fas fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>`;
+                            
+                            rowsFav += `<tr>
+                                    <td> 
+                                        <div class="d-flex flex-row"> 
+                                            <button id="btnSongTable" data-id="${this.index}" data-length="${this.length.split('.')[0]}" class="mb-2 mr-2 btn btn-outline-primary">
+                                                <span id="play" class="play fas fa-play" aria-hidden="true"></span>
+                                            </button> 
+                                            <button id="btnSongFavTable" data-id="${this.index}" data-favorite="${this.favorite}" class="mb-2 mr-2 btn btn-icon">
+                                                ${favorites}
+                                            </button>
+                                            <button id="btnAddtoQueue" data-id="${this.index}" data-length="${this.length.split('.')[0]}" class="mr-2 btn btn-icon-only">
+                                                <i id="queue" class="material-icons" style="font-size: 25px">playlist_add</i>
+                                            </button> 
+                                                
+                                        </div> 
+                                        </td><td>${this.name}</td><td>${this.artist}</td><td>${this.album}</td><td>${this.length.split('.')[0]}</td></tr>`;
+                        }
+                        rows += `<tr>
+                                    <td> 
+                                        <div class="d-flex flex-row"> 
+                                            <button id="btnSongTable" data-id="${this.index}" data-length="${this.length.split('.')[0]}" class="mb-2 mr-2 btn btn-outline-primary">
+                                                <span id="play" class="play fas fa-play" aria-hidden="true"></span>
+                                            </button> 
+                                            <button id="btnSongFavTable" data-id="${this.index}" data-favorite="${this.favorite}" class="mb-2 mr-2 btn btn-icon">
+                                                ${favorites}
+                                            </button>
+                                            <button id="btnAddtoQueue" data-id="${this.index}" class="mr-2 btn btn-icon-only">
+                                                <i id="queue" class="material-icons" style="font-size: 25px">playlist_add</i>
+                                            </button> 
+                                                
+                                        </div> 
+                                        </td><td>${this.name}</td><td>${this.artist}</td><td>${this.album}</td><td>${this.length.split('.')[0]}</td></tr>`;
+                    });
+
+                    $( rows ).appendTo( "#songsTable tbody" );
+                    $( rowsFav ).appendTo( "#favTable tbody" );
+                    $('#favoriteTotal').text(favTotal + " músicas");
+                    $('#songsTotal').text(Object.keys(songs).length+ " músicas");
+
+                }
+            });
+        }
+        function getAlbums(){
+            $.ajax({
+                type : 'GET',
+                headers : {
+                        Accept : "application/json; charset=utf-8",
+                        "Content-Type" : "application/json; charset=utf-8"
+                },
+                url : '/Music',
+                data :{
+                    q: "albums",
+                },
+                success : function(result) {
+                    console.log($.parseJSON(result))
+                    var albums = $.parseJSON(result);
+                    var rows = "";
+                    $('#albumsDiv').empty();
+                    $.each(albums, function(){
+                        var content = `<div class="col-md-4"> 
+                                            <div class="main-card mb-3 card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title" >${this.album}</h5>
+                                                    <h6 class="card-subtitle" >${this.artist}</h6>
+                                                    <button id="btnPlayAlbum" data-id="${this.index}" data-type="album" class="mr-2 btn btn-outline-primary">
+                                                        <span id="play" class="play fas fa-play" aria-hidden="true"></span>
+                                                    </button> 
+                                                    <button id="btnAlbum" data-artist="${this.artist}" data-album="${this.album}" class="btn btn-outline-primary">Ver músicas</button>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>`;
+                        $('#albumsDiv').append(content);
+                        
+                    });
+                    $('#albumsTotal').text(Object.keys(albums).length+ " álbuns")
+                }
+            });
+        }
+        function getArtists(){
+            $.ajax({
+                type : 'GET',
+                headers : {
+                        Accept : "application/json; charset=utf-8",
+                        "Content-Type" : "application/json; charset=utf-8"
+                },
+                url : '/Music',
+                data :{
+                    q: "artists",
+                },
+                success : function(result) {
+                    console.log($.parseJSON(result))
+                    var artists = $.parseJSON(result);
+                    var rows = "";
+                    $('#artistsDiv').empty();
+                    $.each(artists, function(){
+                        var content = `<div class="col-md-4"> 
+                                            <div class="main-card mb-3 card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title" >${this.name}</h5>
+                                                    <button id="btnPlayAlbum" data-id="${this.index}" data-type="artist" class="mr-2 btn btn-outline-primary">
+                                                        <span id="play" class="play fas fa-play" aria-hidden="true"></span>
+                                                    </button> 
+                                                    <button id="btnArtist" data-artist="${this.name}"" class="btn btn-outline-primary">Ver álbuns</button>
+                                                </div>
+                                            </div>
+                                        </div>`;
+                        $('#artistsDiv').append(content);
+                        
+                    });
+                    $('#artistsTotal').text(Object.keys(artists).length+ " artistas")
+                }
+            }); 
+        }
+        function getGenres(){
+            $.ajax({
+                type : 'GET',
+                headers : {
+                        Accept : "application/json; charset=utf-8",
+                        "Content-Type" : "application/json; charset=utf-8"
+                },
+                url : '/Music',
+                data :{
+                    q: "genres",
+                },
+                success : function(result) {
+                    console.log($.parseJSON(result))
+                    var genres = $.parseJSON(result);
+                    var rows = "";
+                    $('#genresDiv').empty();
+                    $.each(genres, function(){
+                        var content = `<div class="col-md-4"> 
+                                            <div class="main-card mb-3 card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title" >${this.name}</h5>
+                                                    <button id="btnPlayAlbum" data-id="${this.index}" data-type="genre" class="mr-2 btn btn-outline-primary">
+                                                        <span id="play" class="play fas fa-play" aria-hidden="true"></span>
+                                                    </button> 
+                                                    <button id="btnGenre" data-genre="${this.name}"" class="btn btn-outline-primary">Ver músicas</button>
+                                                </div>
+                                            </div>
+                                        </div>`;
+                        $('#genresDiv').append(content);
+                        
+                    });
+                    $('#genresTotal').text(Object.keys(genres).length+ " géneros")
+                }
+            }); 
+        }
+        function getQueueSongs(){
+            $.ajax({
+                    type : 'GET',
+                    headers : {
+                            Accept : "application/json; charset=utf-8",
+                            "Content-Type" : "application/json; charset=utf-8"
+                    },
+                    url : '/Music',
+                    data :{
+                        q: "getQueue"
+
+                    },
+                    success : function(result) {
+                        console.log($.parseJSON(result))
+                        var queue = $.parseJSON(result);
+                        var rows = '';
+                        $('#queueTable tbody').empty();
+                        $.each(queue, function(){
+                            var favorites;
+                            if(!this.favorite){
+                                favorites = `<span id="1" class="far fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>
+                                             <span id="2" class="d-none fas fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>`;
+
+                            }else{
+                                favorites = `<span id="1" class="d-none far fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>
+                                             <span id="2" class="fas fa-heart font-size-xlg" style="color: red" aria-hidden="true"></span>`;
+                            }
+                            rows += `<tr>
+                                        <td> 
+                                            <div class="d-flex flex-row">  
+                                                <button id="btnSongFavTable" data-id="${this.index}" data-favorite="${this.favorite}" class="mb-2 mr-2 btn btn-icon">
+                                                    ${favorites}
+                                                </button>
+                                                <button id="btnAddtoQueue" data-id="${this.index}" class="remove mr-2 btn btn-icon-only">
+                                                    <i id="queue" class="material-icons" style="font-size: 25px">remove</i>
+                                                </button> 
+                                            </div> 
+                                            </td><td>${this.name}</td><td>${this.artist}</td><td>${this.album}</td><td>${this.length.split('.')[0]}</td></tr>`;
+                        });
+                    $("#queueSongsTotal").text(Object.keys(queue).length+ " músicas")
+                    $( rows ).appendTo( "#queueTable tbody" );
+
+                }
+            });
+        }
+        
+        function statusSong( status, index, time){
+            console.log("type: "+status)
+            $.ajax({
+                    type : 'GET',
+                    headers : {
+                            Accept : "application/json; charset=utf-8",
+                            "Content-Type" : "application/json; charset=utf-8"
+                    },
+                    url : '/Music',
+                    data :{
+                        q: "statusSong",
+                        index: index,
+                        type: status
+                    },
+                    success : function(result) {
+                        console.log("result")
+                        console.log(result)
+                        if(status === 'play'){
+                            $('#musicControl').find('span').toggleClass("d-none");
+                            currentTime = 1;
+                            songTime = time;
+                            clearInterval(songInterval)
+                            playSong();
+                        }
+                        if(status === 'pause'){
+                            console.log("mult: "+currentTime);
+                            //clearInterval(songInterval)
+                        }
+                        if(status === 'resume'){
+                            console.log("mult: "+currentTime);
+                            //currentTime++;
+                            //playSong();
+                        }
+                    }
+                });
+        }
+        function startPlaylist( status, index){
+            console.log("type: "+status)
+            $.ajax({
+                    type : 'GET',
+                    headers : {
+                            Accept : "application/json; charset=utf-8",
+                            "Content-Type" : "application/json; charset=utf-8"
+                    },
+                    url : '/Music',
+                    data :{
+                        q: "startPlaylist",
+                        index: index,
+                        type: status
+                    },
+                    success : function(result) {
+                        console.log("result")
+                        $('#musicControl').find('span').toggleClass("d-none");
+                    }
+                });
+        }
+        function skipSong(type) {
+            console.log("skipSong:  "+type)
+            $.ajax({
+                    type : 'GET',
+                    headers : {
+                            Accept : "application/json; charset=utf-8",
+                            "Content-Type" : "application/json; charset=utf-8"
+                    },
+                    url : '/Music',
+                    data :{
+                        q: "skipSong",
+                        type: type
+                    },
+                    success : function(result) {
+                        getQueueSongs();
+                        console.log($.parseJSON(result))
+                        $('.progress-bar').css('width', '0%').attr('aria-valuenow', 0);
+                        var currentSong = $.parseJSON(result);
+                        var songName = currentSong.name;
+                        var artistName = currentSong.artist;
+                        $('#songName').text(songName);
+                        $('#songArtistName').text(artistName);
+                        //songTime = toSeconds(currentSong.length);
+                        //currentTime = 1;
+                        //clearInterval(songInterval);
+                        //playSong();
+                        
+                    }
+                });
+        }
+        function searchSong( tableName, inputName){
+            var input, value, tr;
+            input = document.getElementById(inputName);
+            value = input.value;
+            
+            tr = `#${tableName} tr`;
+            $(tr).each(function (index) {
+                if (!index) return;
+                $(this).find("td").not(':last').each(function () {
+                    var id = $(this).text().toLowerCase().trim();
+                    var not_found = (id.indexOf(value) == -1);
+                    $(this).closest('tr').toggle(!not_found);
+                    return not_found;
+                });
+            });
+       }
+        function toSeconds(str) {
+            var pieces = str.split(":");
+            var result = Number(pieces[0]) * 60 + Number(pieces[1]);
+            return(result.toFixed(0));
+        }
+        function playSong() {
+            var timeStep = 100/songTime;
+            var time;
+            songInterval = setInterval(function(){
+                //console.log(currentTime +"/"+ time)
+                
+                makeCurrentSongCall("getCurrentStatus").then(function(resp){
+                    var currentSong = resp.currentSong;
+                    var currentOrder = resp.orderStatus.order;
+                    if(!currentSong) $('#playlistCard').hide();
+                    else $('#playlistCard').show()
+                    $('#timeSongNow').text(currentSong.time.split('.')[0]);
+                    $('#timeSongTotal').text(currentSong.length.split('.')[0]);
+                    if(resp.status === "2") {
+                        $('#musicControl').find('span#pause').addClass("d-none");
+                        $('#musicControl').find('span#resume').removeClass("d-none");
+                    }
+                    if(resp.status === "3"){
+                        $('#musicControl').find('span#resume').addClass("d-none");
+                        $('#musicControl').find('span#pause').removeClass("d-none");
+                    }
+                    $('#songName').text(currentSong.name);
+                    $('#songArtistName').text(currentSong.artist);
+                    $('#playlistName').text(currentSong.playlist);
+                    time = timeStep*currentTime;
+                    console.log(currentSong.time + " s: "+songTime)
+                    songTime = toSeconds(currentSong.length);
+                    currentTime = toSeconds(currentSong.time);
+                    $('.progress-bar').css('width', (currentTime/songTime)*100+'%').attr('aria-valuenow', currentTime).attr('aria-valuemax', songTime); 
+                    console.log(currentTime +"/"+ songTime)
+                    if(currentTime == 1){
+                        getQueueSongs();
+                    }
+                    console.log(currentOrder)
+                    if (currentOrder === 1 || currentOrder === 4) {
+                        $('#btnRepeat').children().addClass('d-none');
+                        $('#btnRepeat').find('i#0').removeClass('d-none');
+                        $('#btnRepeat').removeClass('active');
+                        if(currentOrder === 4){
+                           $('#btnShuffle').addClass('active')
+                        }
+                    } else if (currentOrder === 2) {
+                        $('#btnRepeat').children().addClass('d-none');
+                        $('#btnRepeat').find('i#2').removeClass('d-none');
+                        $('#btnRepeat').addClass('active')
+                        $('#btnShuffle').removeClass('active')
+                    } else if (currentOrder === 3) {
+                        $('#btnRepeat').children().addClass('d-none');
+                        $('#btnRepeat').find('i#1').removeClass('d-none');
+                        $('#btnRepeat').addClass('active');
+                        $('#btnShuffle').removeClass('active')
+                    } 
+                    
+                });
+                
+            },1000)   
+        }
+        function makeCurrentSongCall(question){
+            var promise = new Promise(function(resolve, reject){
+                $.ajax({
+                    type : 'GET',
+                    headers : {
+                            Accept : "application/json; charset=utf-8",
+                            "Content-Type" : "application/json; charset=utf-8"
+                    },
+                    url : '/Music',
+                    data :{
+                        q: question
+                    },
+                    success : function(result) {
+                        resolve($.parseJSON(result));
+                    }
+                });
+                console.log("request sent succesfully");
+            });
+            return promise;
+        }
+    </script>
+</body>
+</html>

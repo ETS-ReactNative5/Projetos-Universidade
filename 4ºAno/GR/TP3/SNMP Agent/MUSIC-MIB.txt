@@ -1,0 +1,842 @@
+MUSIC-MIB DEFINITIONS ::= BEGIN
+
+--
+-- TP3's Music MIB
+--
+
+IMPORTS
+    MODULE-IDENTITY, OBJECT-TYPE,
+    INTEGER, Counter32, Integer32,
+    TimeTicks, experimental         FROM SNMPv2-SMI
+    MODULE-COMPLIANCE, OBJECT-GROUP FROM SNMPv2-CONF
+    DisplayString                   FROM SNMPv2-TC
+;
+
+music           MODULE-IDENTITY
+    LAST-UPDATED    "201912250000Z"
+    ORGANIZATION    "mieti.eng.uminho.pt"
+    CONTACT-INFO
+	    "postal: Azurem
+        email:   mieti@eng.uminho.pt"
+    DESCRIPTION
+	    "Example MIB objects for agent module example implementations"
+    REVISION        "201912250000Z"
+    DESCRIPTION
+	    "Corrected notification example definitions"
+    REVISION        "201912250000Z"
+    DESCRIPTION
+	    "First draft"
+    ::= { experimental 42 }
+
+--
+-- top level structure
+--
+
+musicScan       OBJECT IDENTIFIER ::= { music 1 }
+musicPlay       OBJECT IDENTIFIER ::= { music 2 }
+musicTotal      OBJECT IDENTIFIER ::= { music 3 }
+musicGenre      OBJECT IDENTIFIER ::= { music 4 }
+musicArtist     OBJECT IDENTIFIER ::= { music 5 }
+musicAlbum      OBJECT IDENTIFIER ::= { music 6 }
+musicSong       OBJECT IDENTIFIER ::= { music 7 }
+musicHistory    OBJECT IDENTIFIER ::= { music 8 }
+musicQueue      OBJECT IDENTIFIER ::= { music 9 }
+musicCompliances OBJECT IDENTIFIER ::= { music 10 }
+musicGroups     OBJECT IDENTIFIER ::= { music 11 }
+musicTests      OBJECT IDENTIFIER ::= { music 12 }
+
+--
+-- testing scalars
+--
+
+musicTestScalar	OBJECT-TYPE
+    SYNTAX          Integer32
+    MAX-ACCESS      read-write
+    STATUS          current
+    DESCRIPTION
+        "Testing scalar"
+    DEFVAL { 42 }
+    ::= { musicTests 1 }
+
+musicTestAnotherScalar OBJECT-TYPE
+    SYNTAX          Integer32
+    MAX-ACCESS      read-write
+    STATUS          current
+    DESCRIPTION
+        "Another testing scalar"
+    DEFVAL { 43 }
+    ::= { musicTests 2 }
+
+--
+-- update scalars
+--
+
+musicScanFiles  OBJECT-TYPE
+    SYNTAX          INTEGER {
+                        notScanning(1),
+                        scanning(2)
+                    }
+    MAX-ACCESS      read-write
+    STATUS          current
+    DESCRIPTION
+        "Writeable command to re-scan the files directory"
+    ::= { musicScan 1 }
+
+musicScanTime   OBJECT-TYPE
+    SYNTAX          DisplayString
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Time of the last scan"
+    ::= { musicScan 2 }
+
+--
+-- current playing song info and controls
+--
+
+musicPlayTable OBJECT-TYPE
+    SYNTAX          SEQUENCE OF MusicPlayEntry
+    MAX-ACCESS      not-accessible
+    STATUS          current
+    DESCRIPTION
+        "List with a single row for the current playing song"
+    ::= { musicPlay 1 }
+
+musicPlayEntry OBJECT-TYPE
+    SYNTAX          MusicPlayEntry
+    MAX-ACCESS      not-accessible
+    STATUS          current
+    DESCRIPTION
+        "Entry of the current playing song"
+    ::= { musicPlayTable 1 }
+
+MusicPlayEntry ::= SEQUENCE {
+    musicPlayGenre Integer32,
+    musicPlayArtist Integer32,
+    musicPlayAlbum Integer32,
+    musicPlaySong Integer32,
+    musicPlayName DisplayString,
+    musicPlayTime TimeTicks,
+    musicPlayLength TimeTicks,
+    musicPlayStatus INTEGER,
+    musicPlayOrder INTEGER,
+    musicPlayList INTEGER,
+    musicPlayIndex Integer32,
+    musicPlayQueue Counter32
+}
+
+musicPlayGenre OBJECT-TYPE
+    SYNTAX          Integer32 (0..255)
+    MAX-ACCESS      read-write
+    STATUS          current
+    DESCRIPTION
+        "Index of the genre of the current playing song"
+    DEFVAL { 0 }
+    ::= { musicPlayEntry 1 }
+
+musicPlayArtist OBJECT-TYPE
+    SYNTAX          Integer32 (0..255)
+    MAX-ACCESS      read-write
+    STATUS          current
+    DESCRIPTION
+        "Index of the artist of the current playing song"
+    DEFVAL { 0 }
+    ::= { musicPlayEntry 2 }
+
+musicPlayAlbum OBJECT-TYPE
+    SYNTAX          Integer32 (0..255)
+    MAX-ACCESS      read-write
+    STATUS          current
+    DESCRIPTION
+        "Index of the album of the current playing song"
+    DEFVAL { 0 }
+    ::= { musicPlayEntry 3 }
+
+musicPlaySong OBJECT-TYPE
+    SYNTAX          Integer32 (0..255)
+    MAX-ACCESS      read-write
+    STATUS          current
+    DESCRIPTION
+        "Index of the current playing song"
+    DEFVAL { 0 }
+    ::= { musicPlayEntry 4 }
+
+musicPlayName   OBJECT-TYPE
+    SYNTAX          DisplayString
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Name of the current playing song"
+    ::= { musicPlayEntry 5 }
+
+musicPlayTime   OBJECT-TYPE
+    SYNTAX          TimeTicks
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Playing time of the current playing song"
+    DEFVAL { 0 }
+    ::= { musicPlayEntry 6 }
+
+musicPlayLength OBJECT-TYPE
+    SYNTAX          TimeTicks
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Length/duration of the current playing song"
+    ::= { musicPlayEntry 7 }
+
+musicPlayStatus OBJECT-TYPE
+    SYNTAX          INTEGER {
+                        stopped(1),
+                        paused(2),
+                        playing(3),
+                        playingPrevious(4),
+                        replaying(5),
+                        skipping(6),
+                        autoSkipping(7)
+                    }
+    MAX-ACCESS      read-write
+    STATUS          current
+    DESCRIPTION
+        "Status of the current playing music"
+    DEFVAL { 1 }
+    ::= { musicPlayEntry 8 }
+
+musicPlayOrder OBJECT-TYPE
+    SYNTAX          INTEGER {
+                        notRepeating(1),
+                        repeating(2),
+                        repeatingTrack(3),
+                        shuffling(4)
+                    }
+    MAX-ACCESS      read-write
+    STATUS          current
+    DESCRIPTION
+        "Shuffling mode"
+    DEFVAL { 1 }
+    ::= { musicPlayEntry 9 }
+
+musicPlayList OBJECT-TYPE
+    SYNTAX          INTEGER {
+                        none(1),
+                        genre(2),
+                        artist(3),
+                        album(4),
+                        favorites(5)
+                    }
+    MAX-ACCESS      read-write
+    STATUS          current
+    DESCRIPTION
+        "Current playlist type"
+    DEFVAL { 1 }
+    ::= { musicPlayEntry 10 }
+
+musicPlayIndex  OBJECT-TYPE
+    SYNTAX          Integer32 (0..255)
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Current playlist id"
+    ::= { musicPlayEntry 11 }
+
+musicPlayQueue OBJECT-TYPE
+    SYNTAX          Counter32
+    MAX-ACCESS      read-write
+    STATUS          current
+    DESCRIPTION
+        "Number of musics in queue"
+    DEFVAL { 0 }
+    ::= { musicPlayEntry 12 }
+
+--
+-- total counter for each paramater
+--
+
+musicTotalTable OBJECT-TYPE
+    SYNTAX          SEQUENCE OF MusicTotalEntry
+    MAX-ACCESS      not-accessible
+    STATUS          current
+    DESCRIPTION
+        "List with a single row with every counter"
+    ::= { musicTotal 1 }
+
+musicTotalEntry OBJECT-TYPE
+    SYNTAX          MusicTotalEntry
+    MAX-ACCESS      not-accessible
+    STATUS          current
+    DESCRIPTION
+        "Entry of the list's counters"
+    ::= { musicTotalTable 1 }
+
+MusicTotalEntry ::= SEQUENCE {
+    musicTotalGenres Counter32,
+    musicTotalArtists Counter32,
+    musicTotalAlbums Counter32,
+    musicTotalSongs Counter32
+}
+
+musicTotalGenres OBJECT-TYPE
+    SYNTAX          Counter32
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Total number of genres"
+    ::= { musicTotalEntry 1 }
+
+musicTotalArtists OBJECT-TYPE
+    SYNTAX          Counter32
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Total number of artists"
+    ::= { musicTotalEntry 2 }
+
+musicTotalAlbums OBJECT-TYPE
+    SYNTAX          Counter32
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Total number of albums"
+    ::= { musicTotalEntry 3 }
+
+musicTotalSongs OBJECT-TYPE
+    SYNTAX          Counter32
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Total number of songs"
+    ::= { musicTotalEntry 4 }
+
+--
+-- genre list table
+--
+
+musicGenreTable OBJECT-TYPE
+    SYNTAX          SEQUENCE OF MusicGenreEntry
+    MAX-ACCESS      not-accessible
+    STATUS          current
+    DESCRIPTION
+        "List of every genre"
+    ::= { musicGenre 1 }
+
+musicGenreEntry OBJECT-TYPE
+    SYNTAX          MusicGenreEntry
+    MAX-ACCESS      not-accessible
+    STATUS          current
+    DESCRIPTION
+        "Entry of one of the list's genres"
+    INDEX           { musicGenreIndex }
+    ::= { musicGenreTable 1 }
+
+MusicGenreEntry ::= SEQUENCE {
+    musicGenreIndex Integer32,
+    musicGenreName  DisplayString,
+    musicGenreArtists Counter32,
+    musicGenreAlbums Counter32,
+    musicGenreSongs Counter32
+}
+
+musicGenreIndex OBJECT-TYPE
+    SYNTAX          Integer32 (1..255)
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Index of a genre"
+    ::= { musicGenreEntry 1 }
+
+musicGenreName  OBJECT-TYPE
+    SYNTAX          DisplayString
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Name of a genre"
+    ::= { musicGenreEntry 2 }
+
+musicGenreArtists OBJECT-TYPE
+    SYNTAX          Counter32
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Number of artists of a genre"
+    ::= { musicGenreEntry 3 }
+
+musicGenreAlbums OBJECT-TYPE
+    SYNTAX          Counter32
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Number of albums of a genre"
+    ::= { musicGenreEntry 4 }
+
+musicGenreSongs OBJECT-TYPE
+    SYNTAX          Counter32
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Number of songs of a genre"
+    ::= { musicGenreEntry 5 }
+
+--
+-- artist list table
+--
+
+musicArtistTable OBJECT-TYPE
+    SYNTAX          SEQUENCE OF MusicArtistEntry
+    MAX-ACCESS      not-accessible
+    STATUS          current
+    DESCRIPTION
+        "List of every artist"
+    ::= { musicArtist 1 }
+
+musicArtistEntry OBJECT-TYPE
+    SYNTAX          MusicArtistEntry
+    MAX-ACCESS      not-accessible
+    STATUS          current
+    DESCRIPTION
+        "Entry of one of the list's artists"
+    INDEX           { musicArtistIndex }
+    ::= { musicArtistTable 1 }
+
+MusicArtistEntry ::= SEQUENCE {
+    musicArtistIndex Integer32,
+    musicArtistGenre Integer32,
+    musicArtistName DisplayString,
+    musicArtistAlbums Counter32,
+    musicArtistSongs Counter32
+}
+
+musicArtistIndex OBJECT-TYPE
+    SYNTAX          Integer32 (1..255)
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Index of an artist"
+    ::= { musicArtistEntry 1 }
+
+musicArtistGenre OBJECT-TYPE
+    SYNTAX          Integer32 (0..255)
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Index of the genre of an artist"
+    ::= { musicArtistEntry 2 }
+
+musicArtistName OBJECT-TYPE
+    SYNTAX          DisplayString
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Name of an artist"
+    ::= { musicArtistEntry 3 }
+
+musicArtistAlbums OBJECT-TYPE
+    SYNTAX          Counter32
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Number of albums of an artist"
+    ::= { musicArtistEntry 4 }
+
+musicArtistSongs OBJECT-TYPE
+    SYNTAX          Counter32
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Number of songs of an artist"
+    ::= { musicArtistEntry 5 }
+
+--
+-- album list table
+--
+
+musicAlbumTable OBJECT-TYPE
+    SYNTAX          SEQUENCE OF MusicAlbumEntry
+    MAX-ACCESS      not-accessible
+    STATUS          current
+    DESCRIPTION
+        "List of every song"
+    ::= { musicAlbum 1 }
+
+musicAlbumEntry OBJECT-TYPE
+    SYNTAX          MusicAlbumEntry
+    MAX-ACCESS      not-accessible
+    STATUS          current
+    DESCRIPTION
+        "Entry of one of the list's songs"
+    INDEX           { musicAlbumIndex }
+    ::= { musicAlbumTable 1 }
+
+MusicAlbumEntry ::= SEQUENCE {
+    musicAlbumIndex Integer32,
+    musicAlbumGenre Integer32,
+    musicAlbumArtist Integer32,
+    musicAlbumName  DisplayString,
+    musicAlbumSongs Counter32
+}
+
+musicAlbumIndex OBJECT-TYPE
+    SYNTAX          Integer32 (1..255)
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Index of an album"
+    ::= { musicAlbumEntry 1 }
+
+musicAlbumGenre OBJECT-TYPE
+    SYNTAX          Integer32 (0..255)
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Index of the genre of an album"
+    ::= { musicAlbumEntry 2 }
+
+musicAlbumArtist OBJECT-TYPE
+    SYNTAX          Integer32 (0..255)
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Index of the artist of an album"
+    ::= { musicAlbumEntry 3 }
+
+musicAlbumName  OBJECT-TYPE
+    SYNTAX          DisplayString
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Name of an album"
+    ::= { musicAlbumEntry 4 }
+
+musicAlbumSongs OBJECT-TYPE
+    SYNTAX          Counter32
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Number of songs of an album"
+    ::= { musicAlbumEntry 5 }
+
+--
+-- song list table
+--
+
+musicSongTable  OBJECT-TYPE
+    SYNTAX          SEQUENCE OF MusicSongEntry
+    MAX-ACCESS      not-accessible
+    STATUS          current
+    DESCRIPTION
+        "List of every song"
+    ::= { musicSong 1 }
+
+musicSongEntry  OBJECT-TYPE
+    SYNTAX          MusicSongEntry
+    MAX-ACCESS      not-accessible
+    STATUS          current
+    DESCRIPTION
+        "Entry of one of the list's songs"
+    INDEX           { musicSongIndex }
+    ::= { musicSongTable 1 }
+
+MusicSongEntry ::= SEQUENCE {
+    musicSongIndex  Integer32,
+    musicSongGenre  Integer32,
+    musicSongArtist Integer32,
+    musicSongAlbum  Integer32,
+    musicSongName   DisplayString,
+    musicSongFormat DisplayString,
+    musicSongLength TimeTicks,
+    musicSongSize   Integer32,
+    musicSongPath   DisplayString,
+    musicSongFavorited INTEGER
+}
+
+musicSongIndex  OBJECT-TYPE
+    SYNTAX          Integer32 (1..255)
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Index of a song"
+    ::= { musicSongEntry 1 }
+
+musicSongGenre  OBJECT-TYPE
+    SYNTAX          Integer32 (0..255)
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Index of the genre of a song"
+    ::= { musicSongEntry 2 }
+
+musicSongArtist OBJECT-TYPE
+    SYNTAX          Integer32 (0..255)
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Index of the artist of a song"
+    ::= { musicSongEntry 3 }
+
+musicSongAlbum  OBJECT-TYPE
+    SYNTAX          Integer32 (0..255)
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Index of the album of a song"
+    ::= { musicSongEntry 4 }
+
+musicSongName   OBJECT-TYPE
+    SYNTAX          DisplayString
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Name of a song"
+    ::= { musicSongEntry 5 }
+
+musicSongFormat OBJECT-TYPE
+    SYNTAX          DisplayString
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Format (extention) of a song file"
+    ::= { musicSongEntry 6 }
+
+musicSongLength OBJECT-TYPE
+    SYNTAX          TimeTicks
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Length/duration of a song"
+    ::= { musicSongEntry 7 }
+
+musicSongSize   OBJECT-TYPE
+    SYNTAX          Integer32
+    UNITS           "KBytes"
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Size of a song file"
+    ::= { musicSongEntry 8 }
+
+musicSongPath   OBJECT-TYPE
+    SYNTAX          DisplayString
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Path of a song file"
+    ::= { musicSongEntry 9 }
+
+musicSongFavorited OBJECT-TYPE
+    SYNTAX          INTEGER {
+                        x(1),
+                        FAV(2)
+                    }
+    MAX-ACCESS      read-write
+    STATUS          current
+    DESCRIPTION
+        "Favorite flag"
+    ::= { musicSongEntry 10 }
+
+--
+-- song history table
+--
+
+musicHistoryTable OBJECT-TYPE
+    SYNTAX          SEQUENCE OF MusicHistoryEntry
+    MAX-ACCESS      not-accessible
+    STATUS          current
+    DESCRIPTION
+        "List of every played song"
+    ::= { musicHistory 1 }
+
+musicHistoryEntry OBJECT-TYPE
+    SYNTAX          MusicHistoryEntry
+    MAX-ACCESS      not-accessible
+    STATUS          current
+    DESCRIPTION
+        "Entry of one of the played songs"
+    INDEX           { musicHistoryPosition }
+    ::= { musicHistoryTable 1 }
+
+MusicHistoryEntry ::= SEQUENCE {
+    musicHistoryPosition Integer32,
+    musicHistoryGenre Integer32,
+    musicHistoryArtist Integer32,
+    musicHistoryAlbum Integer32,
+    musicHistorySong Integer32,
+    musicHistoryName DisplayString,
+    musicHistoryLength TimeTicks
+}
+
+musicHistoryPosition OBJECT-TYPE
+    SYNTAX          Integer32 (0..255)
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Position of a played song"
+    ::= { musicHistoryEntry 1 }
+
+musicHistoryGenre OBJECT-TYPE
+    SYNTAX          Integer32 (0..255)
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Index of the genre of a played song"
+    ::= { musicHistoryEntry 2 }
+
+musicHistoryArtist OBJECT-TYPE
+    SYNTAX          Integer32 (0..255)
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Index of the artist of a played song"
+    ::= { musicHistoryEntry 3 }
+
+musicHistoryAlbum OBJECT-TYPE
+    SYNTAX          Integer32 (0..255)
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Index of the album of a played song"
+    ::= { musicHistoryEntry 4 }
+
+musicHistorySong OBJECT-TYPE
+    SYNTAX          Integer32 (0..255)
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Index of a played song"
+    ::= { musicHistoryEntry 5 }
+
+musicHistoryName  OBJECT-TYPE
+    SYNTAX          DisplayString
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Name of a played song"
+    ::= { musicHistoryEntry 6 }
+
+musicHistoryLength OBJECT-TYPE
+    SYNTAX          TimeTicks
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Length/duration of a played song"
+    ::= { musicHistoryEntry 7 }
+
+--
+-- song queue table
+--
+
+musicQueueTable OBJECT-TYPE
+    SYNTAX          SEQUENCE OF MusicQueueEntry
+    MAX-ACCESS      not-accessible
+    STATUS          current
+    DESCRIPTION
+        "List of every song in queue"
+    ::= { musicQueue 1 }
+
+musicQueueAdder OBJECT-TYPE
+    SYNTAX          Integer32 (0..255)
+    MAX-ACCESS      write-only
+    STATUS          current
+    DESCRIPTION
+        "Object to add songs to the end of the queue"
+    ::= { musicQueue 2 }
+
+musicQueueEntry OBJECT-TYPE
+    SYNTAX          MusicQueueEntry
+    MAX-ACCESS      not-accessible
+    STATUS          current
+    DESCRIPTION
+        "Entry of one of the queue's songs"
+    INDEX           { musicQueuePosition }
+    ::= { musicQueueTable 1 }
+
+MusicQueueEntry ::= SEQUENCE {
+    musicQueuePosition Integer32,
+    musicQueueGenre Integer32,
+    musicQueueArtist Integer32,
+    musicQueueAlbum Integer32,
+    musicQueueSong  Integer32,
+    musicQueueName  DisplayString,
+    musicQueueLength TimeTicks
+}
+
+musicQueuePosition OBJECT-TYPE
+    SYNTAX          Integer32 (0..255)
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Position of a song in queue"
+    ::= { musicQueueEntry 1 }
+
+musicQueueGenre OBJECT-TYPE
+    SYNTAX          Integer32
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Genre of a song in queue"
+    ::= { musicQueueEntry 2 }
+
+musicQueueArtist OBJECT-TYPE
+    SYNTAX          Integer32
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Artist of a song in queue"
+    ::= { musicQueueEntry 3 }
+
+musicQueueAlbum OBJECT-TYPE
+    SYNTAX          Integer32
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Album of a song in queue"
+    ::= { musicQueueEntry 4 }
+
+musicQueueSong  OBJECT-TYPE
+    SYNTAX          Integer32 (0..255)
+    MAX-ACCESS      read-write
+    STATUS          current
+    DESCRIPTION
+        "Index of a song in queue"
+    ::= { musicQueueEntry 5 }
+
+musicQueueName  OBJECT-TYPE
+    SYNTAX          DisplayString
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Name of a song in queue"
+    ::= { musicQueueEntry 6 }
+
+musicQueueLength OBJECT-TYPE
+    SYNTAX          TimeTicks
+    MAX-ACCESS      read-only
+    STATUS          current
+    DESCRIPTION
+        "Length/duration of a song in queue"
+    ::= { musicQueueEntry 7 }
+
+--
+-- compliances and groups
+--
+
+musicCompliance MODULE-COMPLIANCE
+    STATUS current
+    DESCRIPTION
+        "The requirements for conformance to the Musics MIB."
+    MODULE -- this module
+
+    GROUP musicInfoGroup
+        DESCRIPTION
+            "Music info group"
+    ::= { musicCompliances 1 }
+
+musicInfoGroup OBJECT-GROUP
+    OBJECTS {
+        music
+    }
+    STATUS current
+    DESCRIPTION
+        "Music info types group"
+    ::= { musicGroups 1 }
+
+END
