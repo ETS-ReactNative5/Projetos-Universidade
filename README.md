@@ -52,20 +52,27 @@
   
 #### Redes de Computadores I
 - **Simulação de LANs Ethernet e Redes TCP/IP usando CORE** / Simulation of Ethernet LANs and TCP/IP Networks using CORE
+  - [Project Folder](3ºAno/Redes1/Ficheiros%20CORE)
+  - [Project Report](3ºAno/Redes1/Relatório.pdf)
 
 #### Redes de Computadores II
 - **Programa de Encaminhamento de Pacotes IPv4** / IPv4 Packet Forwarding Program ``Java``
+  - [Project Folder](3ºAno/Redes2/Projeto)
+  - [Project Report](3ºAno/Redes2/Relatório.pdf)
 
 #### Sistemas Operativos
 - **Execução Agendada de Conjuntos de Programas** / Scheduled Program Execution ``C``
+  - [Project Folder](3ºAno/SO/Projeto)
+  - [Project Report](3ºAno/SO/SO-G6.pdf)
 
 #### Sistemas Distribuídos
 - **Chat simples com sockets TCP** / Simple TCP Chat ``Java``
-
+  - [Project Folder](3ºAno/SD/Projeto)
 ### 4ºAno / 4th Year
 #### Gestão de Redes
 - **Projeto 1** 
   - Familarização com SNMP / SNMP understanding
+  - [Project Report](4ºAno/GR/TP1/Relatório.pdf)
 - **Projeto 2** ``Java, Web``
   - Ferramenta SNMP para monitorização de Processos / SNMP tool for process monitoring
 - **Projeto 3** ``Java, Web``
