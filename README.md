@@ -110,6 +110,7 @@
 Mobile application for making transactions in cryptocurrencies
   > Aplicação Android desenvolvida em React Native / Android application developed in React Native  
   > Plataforma Blockchain CORDA para realização de transações / CORDA Blockchain platform for transactions
+  - [Project Repo](https://github.com/leandroalves99/rm-project)
 
 #### Projeto de Telecomunicações e Informática I
 - **Serviços de monitorização de tráfego baseado em collaborative sensing** ``Android, Web``  
@@ -124,3 +125,4 @@ Corporate Messaging and Alerts Services for Vehicle Networks
   > Emulação de redes IPv6 através do CORE / Emulation of IPv6 networks using CORE  
   > Cliente e Servidor TCP multithread / Multithreaded TCP Client and Server  
   > Ccomunicação encriptada / Encrypted communication  
+  - [Project Folder](4ºAno/GR/PTI2/Projeto)
