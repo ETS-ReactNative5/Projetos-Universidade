@@ -1,0 +1,392 @@
+node n1 {
+    type router
+    model host
+    network-config {
+	hostname n1
+	!
+	interface eth4
+	 ip address 10.0.4.1/24
+	!
+	interface eth3
+	 ip address 10.0.3.1/24
+	!
+	interface eth2
+	 ip address 10.0.2.1/24
+	!
+	interface eth1
+	 ip address 10.0.1.1/24
+	!
+	interface eth0
+	 ip address 10.0.0.1/24
+	!
+    }
+    canvas c1
+    iconcoords {466.0 290.0}
+    labelcoords {466.0 322.0}
+    interface-peer {eth0 n2}
+    interface-peer {eth1 n3}
+    interface-peer {eth2 n4}
+    interface-peer {eth3 n5}
+    interface-peer {eth4 n15}
+    services {DefaultRoute SSH}
+}
+
+node n2 {
+    type lanswitch
+    network-config {
+	hostname n2
+	!
+    }
+    canvas c1
+    iconcoords {153.0 309.0}
+    labelcoords {153.0 333.0}
+    interface-peer {e0 n6}
+    interface-peer {e1 n7}
+    interface-peer {e2 n1}
+}
+
+node n3 {
+    type lanswitch
+    network-config {
+	hostname n3
+	!
+    }
+    canvas c1
+    iconcoords {447.0 141.0}
+    labelcoords {447.0 165.0}
+    interface-peer {e0 n13}
+    interface-peer {e1 n12}
+    interface-peer {e2 n1}
+}
+
+node n4 {
+    type lanswitch
+    network-config {
+	hostname n4
+	!
+    }
+    canvas c1
+    iconcoords {753.0 335.0}
+    labelcoords {753.0 359.0}
+    interface-peer {e0 n11}
+    interface-peer {e1 n10}
+    interface-peer {e2 n1}
+}
+
+node n5 {
+    type lanswitch
+    network-config {
+	hostname n5
+	!
+    }
+    canvas c1
+    iconcoords {464.0 518.0}
+    labelcoords {464.0 542.0}
+    interface-peer {e0 n8}
+    interface-peer {e1 n9}
+    interface-peer {e2 n1}
+}
+
+node n6 {
+    type router
+    model PC
+    network-config {
+	hostname n6
+	!
+	interface eth0
+	 ip address 10.0.0.20/24
+	!
+    }
+    canvas c1
+    iconcoords {75.0 246.0}
+    labelcoords {75.0 278.0}
+    interface-peer {eth0 n2}
+}
+
+node n7 {
+    type router
+    model PC
+    network-config {
+	hostname n7
+	!
+	interface eth0
+	 ip address 10.0.0.21/24
+	!
+    }
+    canvas c1
+    iconcoords {68.0 424.0}
+    labelcoords {68.0 456.0}
+    interface-peer {eth0 n2}
+}
+
+node n8 {
+    type router
+    model PC
+    network-config {
+	hostname n8
+	!
+	interface eth0
+	 ip address 10.0.3.20/24
+	!
+    }
+    canvas c1
+    iconcoords {392.0 604.0}
+    labelcoords {392.0 636.0}
+    interface-peer {eth0 n5}
+}
+
+node n9 {
+    type router
+    model PC
+    network-config {
+	hostname n9
+	!
+	interface eth0
+	 ip address 10.0.3.21/24
+	!
+    }
+    canvas c1
+    iconcoords {541.0 585.0}
+    labelcoords {541.0 617.0}
+    interface-peer {eth0 n5}
+}
+
+node n10 {
+    type router
+    model PC
+    network-config {
+	hostname n10
+	!
+	interface eth0
+	 ip address 10.0.2.21/24
+	!
+    }
+    canvas c1
+    iconcoords {853.0 395.0}
+    labelcoords {853.0 427.0}
+    interface-peer {eth0 n4}
+}
+
+node n11 {
+    type router
+    model PC
+    network-config {
+	hostname n11
+	!
+	interface eth0
+	 ip address 10.0.2.20/24
+	!
+    }
+    canvas c1
+    iconcoords {841.0 303.0}
+    labelcoords {841.0 335.0}
+    interface-peer {eth0 n4}
+}
+
+node n12 {
+    type router
+    model PC
+    network-config {
+	hostname n12
+	!
+	interface eth0
+	 ip address 10.0.1.21/24
+	!
+    }
+    canvas c1
+    iconcoords {532.0 30.0}
+    labelcoords {532.0 62.0}
+    interface-peer {eth0 n3}
+}
+
+node n13 {
+    type router
+    model PC
+    network-config {
+	hostname n13
+	!
+	interface eth0
+	 ip address 10.0.1.20/24
+	!
+    }
+    canvas c1
+    iconcoords {400.0 39.0}
+    labelcoords {400.0 71.0}
+    interface-peer {eth0 n3}
+}
+
+node n15 {
+    type router
+    model router
+    network-config {
+	hostname n15
+	!
+	interface eth1
+	 ip address 192.168.230.2/16
+	!
+	interface eth0
+	 ip address 10.0.4.2/24
+	!
+    }
+    canvas c1
+    iconcoords {628.0 172.0}
+    labelcoords {628.0 204.0}
+    interface-peer {eth0 n1}
+    interface-peer {eth1 n14}
+    custom-config {
+	custom-config-id service:Firewall
+	custom-command Firewall
+	config {
+	files=('firewall.sh', )
+	}
+    }
+    custom-config {
+	custom-config-id service:Firewall:firewall.sh
+	custom-command firewall.sh
+	config {
+	#!/bin/sh
+	# custom node firewall rules for service (security.py)
+	# -------- CUSTOMIZATION REQUIRED --------
+	#
+	# Below are sample iptables firewall rules that you can uncomment and edit.
+	# You can also use ip6tables rules for IPv6.
+	#
+	
+	# start by flushing all firewall rules (so this script may be re-run)
+	#iptables -F
+	
+	# allow traffic related to established connections
+	#iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+	
+	# allow TCP packets from any source destined for 192.168.1.1
+	#iptables -A INPUT -s 0/0 -i eth0 -d 192.168.1.1  -p TCP -j ACCEPT
+	
+	# allow OpenVPN server traffic from eth0
+	#iptables -A INPUT -p udp --dport 1194 -j ACCEPT
+	#iptables -A INPUT -i eth0 -j DROP
+	#iptables -A OUTPUT -p udp --sport 1194 -j ACCEPT
+	#iptables -A OUTPUT -o eth0 -j DROP
+	
+	# allow ICMP ping traffic
+	#iptables -A OUTPUT -p icmp --icmp-type echo-request -j ACCEPT
+	#iptables -A INPUT  -p icmp --icmp-type echo-reply   -j ACCEPT
+	
+	# allow SSH traffic
+	#iptables -A -p tcp -m state --state NEW -m tcp --dport 22 -j ACCEPT
+	
+	# drop all other traffic coming in eth0
+	#iptables -A INPUT -i eth0 -j DROP
+	
+	iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+	iptables -A FORWARD -i eth1 -j ACCEPT
+	#ICMP
+	iptables -t nat -A PREROUTING -p icmp --icmp-type any -j DNAT --to-dest 192.168.230.2
+	
+	
+	}
+    }
+    services {zebra OSPFv2 OSPFv3 vtysh IPForward DefaultRoute Firewall}
+}
+
+node n14 {
+    type rj45
+    network-config {
+	hostname eth0
+	!
+    }
+    canvas c1
+    iconcoords {723.0 69.0}
+    labelcoords {723.0 101.0}
+    interface-peer {0 n15}
+}
+
+link l1 {
+    nodes {n6 n2}
+    bandwidth 0
+}
+
+link l2 {
+    nodes {n2 n7}
+    bandwidth 0
+}
+
+link l3 {
+    nodes {n2 n1}
+    bandwidth 0
+}
+
+link l4 {
+    nodes {n13 n3}
+    bandwidth 0
+}
+
+link l5 {
+    nodes {n12 n3}
+    bandwidth 0
+}
+
+link l6 {
+    nodes {n3 n1}
+    bandwidth 0
+}
+
+link l7 {
+    nodes {n11 n4}
+    bandwidth 0
+}
+
+link l8 {
+    nodes {n10 n4}
+    bandwidth 0
+}
+
+link l9 {
+    nodes {n4 n1}
+    bandwidth 0
+}
+
+link l10 {
+    nodes {n8 n5}
+    bandwidth 0
+}
+
+link l11 {
+    nodes {n9 n5}
+    bandwidth 0
+}
+
+link l12 {
+    nodes {n5 n1}
+    bandwidth 0
+}
+
+link l13 {
+    nodes {n1 n15}
+    bandwidth 0
+}
+
+link l14 {
+    nodes {n15 n14}
+}
+
+canvas c1 {
+    name {Canvas1}
+}
+
+option global {
+    interface_names no
+    ip_addresses yes
+    ipv6_addresses yes
+    node_labels yes
+    link_labels yes
+    show_api no
+    background_images no
+    annotations yes
+    grid yes
+    traffic_start 0
+}
+
+option session {
+    enablerj45=0
+}
+
