@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/commons-net-3.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/pcap4j-core-1.7.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/pcap4j-packetfactory-static-1.7.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jna-5.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j-simple-1.7.25.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j-api-1.7.25.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
