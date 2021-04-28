@@ -1,0 +1,15 @@
+select U.typeId, U.latitude, U.longitude, U.altitude, U.speed, U.bearing, U.speedLimit, UNIX_TIMESTAMP(U.lastTimestamp) as lastTimestamp, R.id as routeId, R.name as routeName, L.id as localityId, L.name as localityName, U.authLocalityId
+from User U, Route R, Locality L where U.id = 22 and R.id = U.routeId and L.id = R.localityId;
+
+select U.id, U.name, U.typeId, U.latitude, U.longitude, U.speed, U.bearing, U.speedLimit, U.status, U.sos from User U, Route R
+where (U.status > 0 and UNIX_TIMESTAMP(U.lastTimestamp) >= UNIX_TIMESTAMP(CURRENT_TIMESTAMP()) - 60000000000
+and R.id = U.routeId and R.localityId = 2)
+or (U.sos = 6 and UNIX_TIMESTAMP(U.lastTimestamp) >= UNIX_TIMESTAMP(CURRENT_TIMESTAMP()) - 60000000000
+and R.id = U.routeId and R.localityId = 2)
+or (U.speed > U.speedLimit + 30 and UNIX_TIMESTAMP(U.lastTimestamp) >= UNIX_TIMESTAMP(CURRENT_TIMESTAMP()) - 60000000000
+and R.id = U.routeId and R.localityId = 2) and U.id != 16;
+
+insert into User values (11, 'simulated1@mail.com', 'Simulated 1', '1234', 1, 41.441606113479665, -8.290982063901657, 200, 50, 135, 50, 2, 0, 0, 58, now());
+insert into User values (12, 'simulated2@mail.com', 'Simulated 2', '1234', 1, 41.441606113479665, -8.290982063901657, 200, 50, 135, 50, 2, 0, 0, 58, now());
+insert into User values (13, 'simulated3@mail.com', 'Simulated 3', '1234', 1, 41.441606113479665, -8.290982063901657, 200, 50, 135, 50, 2, 0, 0, 58, now());
+insert into User values (14, 'simulated4@mail.com', 'Simulated 4', '1234', 1, 41.441606113479665, -8.290982063901657, 200, 50, 135, 50, 2, 0, 0, 58, now());
