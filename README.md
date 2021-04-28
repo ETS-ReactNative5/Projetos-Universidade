@@ -119,8 +119,8 @@ Traffic monitoring services based on collaborative sensing
   > Aplicação Android para aquisição de dados GPS / Android application for GPS data acquisition  
   > Aplicação Android como serviço de *gateway* /  Android application as a *gateway* service  
   
-  [Project Folder](4ºAno/PTI1/Projeto)
-  [Project Report](4ºAno/PTI1/Relatório.pdf)
+  - [Project Folder](4ºAno/PTI1/Projeto)
+  - [Project Report](4ºAno/PTI1/Relatório.pdf)
 #### Projeto de Telecomunicações e Informática II
 - **Serviços Corporativos de Mensagens e Alertas para Redes Veiculares** ``Java``  
 Corporate Messaging and Alerts Services for Vehicle Networks
@@ -128,4 +128,4 @@ Corporate Messaging and Alerts Services for Vehicle Networks
   > Cliente e Servidor TCP multithread / Multithreaded TCP Client and Server  
   > Ccomunicação encriptada / Encrypted communication  
 
-  [Project Folder](4ºAno/PTI2/Projeto)
+  - [Project Folder](4ºAno/PTI2/Projeto)
