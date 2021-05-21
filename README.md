@@ -82,7 +82,7 @@
   - [Project Report](4ºAno/GR/TP3/Relatório.pdf)
 
 #### Tecnologias e Serviços Multimédia
-- [**Projeto 1**](4ºAno/TSM/TP1) ``C``
+- [Projeto 1](4ºAno/TSM/TP1) ``C``
   - Programa de compressão/descompressão com o algoritmo Shannon-Fano  
   Compression/decompression program with the Shannon-Fano algorithm
 - [Projeto 2](4ºAno/TSM/TP2) ``C``
@@ -118,7 +118,9 @@ Traffic monitoring services based on collaborative sensing
   > Aplicação Web desenvolvida em ReactJS / Web application developed in ReactJS  
   > Aplicação Android para aquisição de dados GPS / Android application for GPS data acquisition  
   > Aplicação Android como serviço de *gateway* /  Android application as a *gateway* service  
-
+  
+  - [Project Folder](4ºAno/PTI1/Projeto)
+  - [Project Report](4ºAno/PTI1/Relatório.pdf)
 #### Projeto de Telecomunicações e Informática II
 - **Serviços Corporativos de Mensagens e Alertas para Redes Veiculares** ``Java``  
 Corporate Messaging and Alerts Services for Vehicle Networks
@@ -126,4 +128,4 @@ Corporate Messaging and Alerts Services for Vehicle Networks
   > Cliente e Servidor TCP multithread / Multithreaded TCP Client and Server  
   > Ccomunicação encriptada / Encrypted communication  
 
-  [Project Folder](4ºAno/PTI2/Projeto)
+  - [Project Folder](4ºAno/PTI2/Projeto)
