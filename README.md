@@ -88,7 +88,7 @@
 - [Projeto 2](4ºAno/TSM/TP2) ``C``
   - Programa de compressão/descompressão com o algoritmo LZW  
   Compression/decompression program with the LZW algorithm
-- **Projeto 3** ``Java``
+- [Projeto 3](4ºAno/TSM/TP3) ``Java``
   - Distribuição de áudio PCM / PCM audio distribution  
   
 #### Criptografia
